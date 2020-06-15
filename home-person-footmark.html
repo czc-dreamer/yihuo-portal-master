@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>我的收藏</title>
+    <link rel="icon" href="/assets/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
+</head>
+
+<body>
+    <!--页面顶部白条条，由js动态加载-->
+    <script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
+    <div class="nav-bottom"></div>
+    <script type="text/javascript">$(".nav-bottom").load("top.html");</script>
+
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#service").hover(function () {
+                $(".service").show();
+            }, function () {
+                $(".service").hide();
+            });
+            $("#shopcar").hover(function () {
+                $("#shopcarlist").show();
+            }, function () {
+                $("#shopcarlist").hide();
+            });
+
+        })
+    </script>
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="js/widget/nav.js"></script>
+</body>
+<!--header-->
+<div id="account">
+    <div class="py-container">
+        <div class="yui3-g collect">
+            <!--左侧列表-->
+            <div class="yui3-u-1-6 list">
+
+                <div class="person-info">
+                    <div class="person-photo"><img :src=userHead alt=""></div>
+                    <div class="person-account">
+                        <span class="name">{{user.username}}</span>
+                        <span class="safe">账户安全</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="list-items">
+                    <dl>
+                        <dt><i>·</i> 订单中心</dt>
+                        <dd><a href="home-index.html">我的订单</a></dd>
+                        <dd><a href="home-order-pay.html">待付款</a></dd>
+                        <dd><a href="home-order-send.html">待发货</a></dd>
+                        <dd><a href="home-order-receive.html">待收货</a></dd>
+                        <dd><a href="home-order-evaluate.html">待评价</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><i>·</i> 我的中心</dt>
+                        <dd><a href="home-person-collect.html">我的收藏</a></dd>
+                        <dd><a href="home-person-footmark.html" class="list-active">我的足迹</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><i>·</i> 物流消息</dt>
+                    </dl>
+                    <dl>
+                        <dt><i>·</i> 设置</dt>
+                        <dd><a href="home-setting-info.html">个人信息</a></dd>
+                        <dd><a href="home-setting-address.html">地址管理</a></dd>
+                        <dd><a href="home-setting-safe.html">安全管理</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <!--右侧主内容-->
+            <div class="yui3-u-5-6 goods">
+                <div class="body">
+                    <h4>全部足迹 12</h4>
+                    <div class="goods-list">
+                        <ul class="yui3-g" id="goods-list">
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="img/_/t.jpg" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
+                                    <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank"
+                                            class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="img/_/t.jpg" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
+                                    <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank"
+                                            class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="img/_/t.jpg" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
+                                    <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank"
+                                            class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="img/_/t.jpg" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
+                                    <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank"
+                                            class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="img/_/t.jpg" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
+                                    <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank"
+                                            class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="img/_/t.jpg" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>139.00</i></strong></div>
+                                    <div class="attr"><em>Apple苹果iPhone 6s 32G金色 移动联通电信4G手机</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank"
+                                            class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部栏位 -->
+<!--页面底部，由js动态加载-->
+<div class="clearfix footer"></div>
+<script type="text/javascript">$(".footer").load("foot.html");</script>
+<!--页面底部END-->
+<script src="./js/vue/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/plugins/jquery/jquery.cookie.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#account",
+        data: {
+            userHead: '',
+            user: {},
+            orders: [],
+            total: 0, //总条数
+            totalPage: 0,//总页数
+            query: {
+                status: 0,
+                page: 1,
+                rows: 5
+            },
+            orderList: "", //订单列表显示
+            orderDetail: "none",
+            detailOrder: [], //订单详情展示
+            orderStatus: [], //订单状态
+            stateData: [
+                "提交订单",
+                "付款成功",
+                "发货",
+                "确认收货",
+                "已评价"
+            ],
+            stateType: [
+                "createTime",
+                "paymentTime",
+                "consignTime",
+                "endTime",
+                "commentTime"
+            ],
+            orderState: [],
+        },
+        components: {
+            yhTop: () => import('./js/pages/top.js')
+        },
+        created() {
+            //加载数据
+            this.orderDetail = "none";
+            this.loadOrder();
+        },
+        methods: {
+            stateTransition(i) {
+
+            },
+            orderDetailsShow(orderId) {
+                //初始化orderState
+                this.orderState = [];
+                this.orderDetail = '';
+                this.orderList = "none";
+                //查询订单信息
+                yh.http.get("/order/" + orderId).then(({ data }) => {
+                    this.detailOrder = data;
+                    //查询订单详情
+                    yh.http.get("/order/status/" + orderId).then(({ data }) => {
+                        this.orderStatus = data;
+                        //封装orderState
+                        this.createOrderState(data);
+
+                    })
+
+                });
+            },
+            createOrderState(data) {
+                for (let i = 1; i <= 5; i++) {
+                    let temp = {
+                        stateClass: '',
+                        stateTime: '',
+                        stateDay: '',
+                        stateTitle: '',
+                    };
+                    temp.stateTitle = this.stateData[i - 1];
+                    if (i === data.status) {
+                        const t = this.formatDate(data[this.stateType[i - 1]]).split(" ");
+                        temp.stateDay = t[0];
+                        temp.stateTime = t[1];
+                        temp.stateClass = "current";
+                        this.orderState.push(temp);
+                        continue;
+                    } else if (i < data.status) {
+                        const t = this.formatDate(data[this.stateType[i - 1]]).split(" ");
+                        temp.stateDay = t[0];
+                        temp.stateTime = t[1];
+                        if (i === 5) {
+                            temp.stateClass = "finished last";
+                        } else {
+                            temp.stateClass = "finished";
+                        }
+                        this.orderState.push(temp);
+                        continue;
+                    } else {
+                        if (i === 5) {
+                            temp.stateClass = "todo last";
+                        } else {
+                            temp.stateClass = "todo";
+                        }
+                        temp.stateDay = "";
+                        temp.stateTime = "";
+                        this.orderState.push(temp);
+                        continue;
+                    }
+
+                }
+            },
+            convertOwnspec(ownSpec) {
+                let result = "";
+                const temp = JSON.parse(ownSpec)
+                for (let key in temp) {
+                    result += "  " + key + ":" + temp[key];
+                }
+                return result;
+            },
+            payment(orderId, totalPay) {
+                //付款
+                //1.修改订单状态
+                this.updateOrderState(orderId, 2);
+                //2.跳转到支付页面
+                window.location = "pay.html";
+                //4.2 添加总金额和订单号到本地数据
+                yh.store.set("totalPay", totalPay);
+                yh.store.set("orderId", orderId);
+            },
+            deliver(orderId) {
+                //提醒发货
+                this.updateOrderState(orderId, 3);
+            },
+            receiveGoods(orderId) {
+                //确认收货
+                this.updateOrderState(orderId, 4);
+            },
+            cancelOrder(orderId) {
+                //取消订单
+                this.updateOrderState(orderId, 5);
+            },
+            review(orderId) {
+                //评价
+                this.updateOrderState(orderId, 6);
+            },
+            updateOrderState(orderId, status) {
+                yh.verifyUser().then(() => {
+                    yh.http.put("/order/" + orderId + "/" + status).then(() => {
+                        this.loadOrder();
+                    })
+                }).catch(() => {
+                    this.gotoLogin();
+                })
+            },
+            navPage() {
+                this.query.page = this.$refs.page.value;
+            },
+            index(i) {
+                if (this.query.page <= 3 || this.totalPage <= 5) {
+                    // 如果当前页小于等于3或者总页数小于等于5
+                    return i;
+                } else if (this.query.page > this.totalPage - 3) {
+                    //当前页码大于totalPage-3，应该从totalPage-5开始
+                    return this.totalPage - 5 + i;
+                } else if (this.query.page > 3) {
+                    // 如果当前页大于3，应该从page-3开始
+                    return this.query.page - 3 + i;
+                }
+            },
+            prevPage() {
+                if (this.query.page > 1) {
+                    this.query.page--
+                }
+            },
+            nextPage() {
+                if (this.query.page < this.totalPage) {
+                    this.query.page++
+                }
+            },
+            logout() {
+                // 删除cookie中的token即可
+                Cookies.remove("yh_TOKEN", {
+                    path: "/",
+                    domain: "yihuo.com"
+                });
+                window.location = 'http://www.yihuo.com'
+            },
+            gotoLogin() {
+                window.location = "login.html?returnUrl=" + window.location;
+            },
+            loadOrder() {
+                yh.verifyUser().then(resp => {
+                    // 查询用户信息
+                    this.user = resp.data;
+                    yh.http.get("/user/queryUserInfo/" + this.user.id).then((UInfo) => {
+
+                        var obj = UInfo.data
+                        console.log(obj)
+                        this.userHead = obj[0].head
+                    })
+                    // 查询订单信息
+                    yh.http.get("/order/list?" + yh.stringify(this.query)).then(({ data: { items, total, totalPage } }) => {
+                        this.orders = items;
+                        this.total = total;
+                        this.totalPage = totalPage;
+                    }).catch(() => this.orders = [])
+
+                }).catch(() => {
+                    // 去登录
+                    this.gotoLogin();
+                });
+            },
+            formatDate: yh.formatDate,
+            formatPrice: yh.formatPrice,
+            getTotalPrice(order) {
+                return order.orderDetails.map(d => d.num * d.price).reduce((v1, v2) => v1 + v2, 0);
+            }
+        },
+        watch: {
+            'query': {
+                deep: true,
+                handler() {
+                    this.loadOrder();
+                }
+            }
+        }
+    });
+</script>
+
+</html>

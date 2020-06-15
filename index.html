@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>首页</title>
+	<link rel="icon" href="assets/img/favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="css/webbase.css" />
+	<link rel="stylesheet" type="text/css" href="css/pages-JD-index.css" />
+	<link rel="stylesheet" type="text/css" href="css/widget-jquery.autocomplete.css" />
+	<link rel="stylesheet" type="text/css" href="css/widget-cartPanelView.css" />
+	<style>
+		nav {
+			position: fixed;
+			right: 0;
+			top: 185px;
+			bottom: 0;
+			display: block;
+			height: 160px;
+			min-width: 40px;
+			width: 80px;
+			background-color: #e1b203;
+			transition-delay: 0s;
+			transition-duration: 0.4s;
+			transition-property: all;
+			transition-timing-function: line;
+			/* padding-top: 50px; */
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- 头部栏位 -->
+	<div id="nav-bottom">
+		<yh-top />
+	</div>
+	<!--页面顶部，由js动态加载-->
+	<script src="./js/vue/vue.js"></script>
+	<script src="./js/axios.min.js"></script>
+	<script src="./js/common.js"></script>
+	<script type="text/javascript">
+		var indexVm = new Vue({
+			el: "#nav-bottom",
+			components: {
+				yhTop: () => import('./js/pages/top.js')
+			},
+		});
+	</script>
+
+
+	<!--列表-->
+	<div class="sort">
+		<div class="py-container">
+			<div class="yui3-g SortList ">
+				<div class="yui3-u Left all-sort-list">
+					<div class="all-sort-list2" id="aa">
+						<div class="item bo">
+							<h3><a href="">手机</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">手机</a></dt>
+										<dd><em><a href="javascript:void(0)">智能机</a></em><em><a
+													href="javascript:void(0)">老人机</a></em><em><a
+													href="javascript:void(0)">5G手机</a></em><em><a
+													href="javascript:void(0)">全面屏手机</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="javascript:void(0)">电脑</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">电脑</a></dt>
+										<dd><em><a href="javascript:void(0)">笔记本</a></em><em><a
+													href="javascript:void(0)">台式机</a></em><em><a
+													href="javascript:void(0)">平板电脑</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="javascript:void(0)">数码配件</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">数码配件</a></dt>
+										<dd><em><a href="javascript:void(0)">移动硬盘</a></em><em><a
+													href="javascript:void(0)">相机</a></em><em><a
+													href="javascript:void(0)">显示器</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="javascript:void(0)">影音娱乐</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">影音娱乐</a></dt>
+										<dd><em><a href="javascript:void(0)">耳机</a></em><em><a
+													href="javascript:void(0)">MP3/MP4</a></em><em><a
+													href="javascript:void(0)">游戏机</a></em><em><a
+													href="javascript:void(0)">键盘</a></em><em><a
+													href="javascript:void(0)">鼠标</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="javascript:void(0)">运动健身</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">运动健身</a></dt>
+										<dd><em><a href="javascript:void(0)">篮球</a></em><em><a
+													href="javascript:void(0)">足球</a></em><em><a
+													href="javascript:void(0)">羽毛球</a></em><em><a
+													href="javascript:void(0)">球拍</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="javascript:void(0)">衣物鞋帽</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">上衣</a></dt>
+										<dd><em><a href="javascript:void(0)">裤子</a></em><em><a
+													href="javascript:void(0)">背包</a></em><em><a
+													href="javascript:void(0)">雨伞</a></em><em><a
+													href="javascript:void(0)">鞋子</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="">生活娱乐</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">生活娱乐</a></dt>
+										<dd><em><a href="javascript:void(0)">乐器</a></em><em><a
+													href="javascript:void(0)">游戏账号</a></em><em><a
+													href="javascript:void(0)">化妆品</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="">图书教材</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">教材</a></dt>
+										<dd><em><a href="javascript:void(0)">考研资料</a></em><em><a
+													href="javascript:void(0)">课外书</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<h3><a href="javascript:void(0)">交通出行</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">交通出行</a></dt>
+										<dd><em><a href="javascript:void(0)">自行车</a></em><em><a
+													href="javascript:void(0)">电动车</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						
+						<div class="item">
+							<h3><a href="javascript:void(0)">考研资料</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">考研资料</a></dt>
+										<dd><em><a href="javascript:void(0)">考研数学</a></em><em><a
+													href="javascript:void(0)">考研英语</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<h3><a href="javascript:void(0)">外国文学</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)"></a></dt>
+										<dd><em><a href="javascript:void(0)">欧美</a></em><em><a
+													href="javascript:void(0)">日韩</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<h3><a href="javascript:void(0)">动漫周边</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">漫画</a></dt>
+										<dd><em><a href="javascript:void(0)">手办</a></em><em><a
+													href="javascript:void(0)">海报</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<h3><a href="javascript:void(0)">虚拟产品</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">虚拟产品</a></dt>
+										<dd><em><a href="javascript:void(0)">游戏代练</a></em><em><a
+													href="javascript:void(0)">游戏账号</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<h3><a href="javascript:void(0)">其它</a></h3>
+							<div class="item-list clearfix">
+								<div class="subitem">
+									<dl class="fore1">
+										<dt><a href="javascript:void(0)">其它</a></dt>
+										<dd><em><a href="javascript:void(0)">手表</a></em><em><a
+													href="javascript:void(0)">项链</a></em></dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="yui3-u Center banerArea">
+					<!--banner轮播-->
+					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="active item">
+								<a href="/">
+									<img src="img/lunbotu.png" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="/">
+									<img src="img/图怪兽.jpg" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="/">
+									<img src="img/sy.jpeg" />
+								</a>
+
+							</div>
+						</div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a
+							href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
+					</div>
+				</div>
+				<div class="yui3-u Right">
+					<div class="news">
+						<h4><em class="fl">易货</em><span class="fr tip">更多 ></span></h4>
+						<div class="clearix"></div>
+						<ul class="news-list unstyled">
+							<li>
+								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
+							</li>
+							<li>
+								<span class="bold">[公告]</span>备战开学季 全民半价购数码
+							</li>
+							<li>
+								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
+							</li>
+							<li>
+								<span class="bold">[公告]</span>备战开学季 全民半价购数码
+							</li>
+							<li>
+								<span class="bold">[特惠]</span>备战开学季 全民半价购数码
+							</li>
+						</ul>
+					</div>
+					<ul class="yui3-g Lifeservice">
+						<li class="yui3-u-1-4 life-item tab-item">
+							<i class="list-item list-item-1"></i>
+							<span class="service-intro">话费</span>
+						</li>
+						<li class="yui3-u-1-4 life-item tab-item">
+							<i class="list-item list-item-2"></i>
+							<span class="service-intro">机票</span>
+						</li>
+						<li class="yui3-u-1-4 life-item tab-item">
+							<i class="list-item list-item-3"></i>
+							<span class="service-intro">电影票</span>
+						</li>
+						<li class="yui3-u-1-4 life-item tab-item">
+							<i class="list-item list-item-4"></i>
+							<span class="service-intro">游戏</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-5"></i>
+							<span class="service-intro">辅导</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-6"></i>
+							<span class="service-intro">打扮</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-7"></i>
+							<span class="service-intro">考试</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-8"></i>
+							<span class="service-intro">火车票</span>
+						</li>
+						<li class="yui3-u-1-4 life-item  notab-item">
+							<i class="list-item list-item-9"></i>
+							<span class="service-intro">众筹</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-10"></i>
+							<span class="service-intro">理财</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-11"></i>
+							<span class="service-intro">礼品卡</span>
+						</li>
+						<li class="yui3-u-1-4 life-item notab-item">
+							<i class="list-item list-item-12"></i>
+							<span class="service-intro">白条</span>
+						</li>
+					</ul>
+					<div class="life-item-content">
+						<div class="life-detail">
+							<i class="close">关闭</i>
+							<p>话费充值</p>
+							<form action="" class="sui-form form-horizontal">
+								号码：<input type="text" id="inputphoneNumber" placeholder="输入你的号码" />
+							</form>
+							<button class="sui-btn btn-danger">快速充值</button>
+						</div>
+						<div class="life-detail">
+							<i class="close">关闭</i> 机票
+						</div>
+						<div class="life-detail">
+							<i class="close">关闭</i> 电影票
+						</div>
+						<div class="life-detail">
+							<i class="close">关闭</i> 游戏
+						</div>
+					</div>
+					<div class="ads">
+						<img src="img/ad1.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--推荐-->
+	<div class="show">
+		<div class="py-container">
+			<ul class="yui3-g Recommend" id="tuijian">
+				<li class="yui3-u-1-6  clock">
+					<div class="time">
+						<img src="img/clock.png" />
+						<h3>今日推荐</h3>
+					</div>
+				</li>
+				<li class="yui3-u-5-24">
+					<a href="javascript:void(0)" target="_blank" ><img src="img/lanqiu.jpg" style="width: 250px; height: 165px;"/>篮球</a>
+				</li>
+				<li class="yui3-u-5-24">
+					<a href="javascript:void(0)" target="_blank"><img src="img/shuxue.jpg" style="width: 250px; height: 165px;"/>高等数学</a>
+				</li>
+				<li class="yui3-u-5-24">
+					<a href="javascript:void(0)" target="_blank"><img src="img/nvxie.jpg" style="width: 250px; height: 165px;"/>鞋子</a>
+				</li>
+				<li class="yui3-u-5-24">
+					<a href="javascript:void(0)" target="_blank"><img src="img/xs.jpg" style="width: 250px; height: 165px;"/>xs</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--喜欢-->
+	<div class="like">
+		<div class="py-container">
+			<div class="title">
+				<h3 class="fl">猜你喜欢</h3>
+				<b class="border"></b>
+				<a href="javascript:;" class="fr tip changeBnt" id="xxlChg"><i></i>换一换</a>
+			</div>
+			<div class="bd" id="like">
+				<ul class="clearfix yui3-g Favourate picLB" id="picLBxxl">
+					<li class="yui3-u-1-6">
+						<dl class="picDl huozhe">
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/honor.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">荣耀</a></p>
+									<h3>¥3000.00</h3>
+								</div>
+							</dd>
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/故宫.png" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">故宫</a></p>
+									<h3>¥116.00</h3>
+								</div>
+							</dd>
+						</dl>
+					</li>
+					<li class="yui3-u-1-6">
+						<dl class="picDl jilu">
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/资本论.png" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">资本论</a></p>
+									<h3>¥116.00</h3>
+								</div>
+							</dd>
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/墨菲定律.png" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">墨菲定律</a></p>
+									<h3>¥40.00</h3>
+								</div>
+							</dd>
+						</dl>
+					</li>
+					<li class="yui3-u-1-6">
+						<dl class="picDl tuhua">
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/自行车.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">自行车</a> </p>
+									<h3>¥200</h3>
+								</div>
+							</dd>
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img nsrc="img/三星.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">三星</a></p>
+									<h3>¥5000.00</h3>
+								</div>
+							</dd>
+						</dl>
+					</li>
+					<li class="yui3-u-1-6">
+						<dl class="picDl huozhe">
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/lanqiu.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">篮球</a></p>
+									<h3>¥150.00</h3>
+								</div>
+							</dd>
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/考研数学.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">考研数学</a></p>
+									<h3>¥116.00</h3>
+								</div>
+							</dd>
+						</dl>
+					</li>
+					<li class="yui3-u-1-6">
+						<dl class="picDl jilu">
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/macbook pro.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">macbook</a></p>
+									<h3>¥10000.00</h3>
+								</div>
+							</dd>
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/福尔摩斯.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">福尔摩斯</a></p>
+									<h3>¥40.00</h3>
+								</div>
+							</dd>
+						</dl>
+					</li>
+					<li class="yui3-u-1-6">
+						<dl class="picDl tuhua">
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img src="img/乒乓球.jpg" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">乒乓球</a> </p>
+									<h3>¥800</h3>
+								</div>
+							</dd>
+							<dd>
+								<a href="javascript:void(0)" class="pic"><img nsrc="img/小米.png" alt="" /></a>
+								<div class="like-text">
+									<p><a href="javascript:void(0)">小米</a></p>
+									<h3>¥2999.00</h3>
+								</div>
+							</dd>
+						</dl>
+					</li>
+			</div>
+		</div>
+	</div>
+
+	<!--楼层-->
+	<div id="floor-1" class="floor">
+		<div class="py-container">
+			<div class="title floors">
+				<h3 class="fl">图书教材</h3>
+				<div class="fr">
+					<ul class="sui-nav nav-tabs">
+						<li class="active">
+							<a href="javascript:void(0)" data-toggle="tab">热门</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">教材</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">考研</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">笔记</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">小说</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">报纸</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">杂志</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix  tab-content floor-content">
+				<div id="tab1" class="tab-pane active">
+					<div class="yui3-g Floor-1">
+						<div class="yui3-u Left blockgary">
+							<ul class="jd-list">
+								<li><a href="javascript:void(0)">教材</a></li>
+								<li><a href="javascript:void(0)">小说</a></li>
+								<li><a href="javascript:void(0)">教材</a></li>
+								<li><a href="javascript:void(0)">考研英语</a></li>
+								<li><a href="javascript:void(0)">考研数学</a></li>
+								<li><a href="javascript:void(0)">课外书</a></li>
+							</ul>
+							<img src="img/考研数学.jpg" />
+						</div>
+						<div class="yui3-u row-330 floorBanner">
+							<div id="floorCarousel" data-ride="carousel" data-interval="4000"
+								class="sui-carousel slide">
+								<ol class="carousel-indicators">
+									<li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#floorCarousel" data-slide-to="1"></li>
+									<li data-target="#floorCarousel" data-slide-to="2"></li>
+								</ol>
+								<div class="carousel-inner">
+									<div class="active item">
+										<img style="widows: 330px;height: 360px;" src="img/十天考研.png">
+									</div>
+									<div class="item">
+										<img style="height: 360px;" src="img/朗文字典.png">
+									</div>
+									<div class="item">
+										<img style="height: 360px;" src="img/墨菲定律.png">
+									</div>
+								</div>
+								<a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
+								<a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
+							</div>
+						</div>
+						<div class="yui3-u row-220 split">
+							<span class="floor-x-line"></span>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/王道考研.jpg" />
+							</div>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/李永乐数学.jpg" />
+							</div>
+						</div>
+						<div class="yui3-u row-218 split">
+							<img style="width: 220px; height: 360px;" src="img/人工智能.png" />
+						</div>
+						<div class="yui3-u row-220 split">
+							<span class="floor-x-line"></span>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/考研数学2.jpg" />
+							</div>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/考研英语.jpg" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab2" class="tab-pane">
+					<p>第二个</p>
+				</div>
+				<div id="tab3" class="tab-pane">
+					<p>第三个</p>
+				</div>
+				<div id="tab4" class="tab-pane">
+					<p>第4个</p>
+				</div>
+				<div id="tab5" class="tab-pane">
+					<p>第5个</p>
+				</div>
+				<div id="tab6" class="tab-pane">
+					<p>第6个</p>
+				</div>
+				<div id="tab7" class="tab-pane">
+					<p>第7个</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="floor-2" class="floor">
+		<div class="py-container">
+			<div class="title floors">
+				<h3 class="fl">手机通讯</h3>
+				<div class="fr">
+					<ul class="sui-nav nav-tabs">
+						<li class="active">
+							<a href="javascript:void(0)" data-toggle="tab">热门</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">充电线</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">99新</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">智能机</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">充电宝</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">显示器</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" data-toggle="tab">手机配件</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix  tab-content floor-content">
+				<div id="tab8" class="tab-pane active">
+					<div class="yui3-g Floor-1">
+						<div class="yui3-u Left blockgary">
+							<ul class="jd-list">
+								<li><a href="javascript:void(0)">华为</a></li>
+								<li><a href="javascript:void(0)">三星</a></li>
+								<li><a href="javascript:void(0)">苹果</a></li>
+								<li><a href="javascript:void(0)">小米</a></li>
+								<li><a href="javascript:void(0)">OPPO</a></li>
+								<li><a href="javascript:void(0)">荣耀</a></li>
+							</ul>
+							<img src="img/s10+黑.jpg" />
+						</div>
+						<div class="yui3-u row-330 floorBanner">
+							<div id="floorCarousell" data-ride="carousel" data-interval="4000"
+								class="sui-carousel slide">
+								<ol class="carousel-indicators">
+									<li data-target="#floorCarousell" data-slide-to="0" class="active"></li>
+									<li data-target="#floorCarousell" data-slide-to="1"></li>
+									<li data-target="#floorCarousell" data-slide-to="2"></li>
+								</ol>
+								<div class="carousel-inner">
+									<div class="active item">
+										<img src="img/s10+黑.jpg">
+									</div>
+									<div class="item">
+										<img src="img/xs.jpg">
+									</div>
+									<div class="item">
+										<img src="img/honor.jpg">
+									</div>
+								</div>
+								<a href="#floorCarousell" data-slide="prev" class="carousel-control left">‹</a>
+								<a href="#floorCarousell" data-slide="next" class="carousel-control right">›</a>
+							</div>
+						</div>
+						<div class="yui3-u row-220 split">
+							<span class="floor-x-line"></span>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/honor.jpg" />
+							</div>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/11pro暗夜绿.jpg" />
+							</div>
+						</div>
+						<div class="yui3-u row-218 split">
+							<img style="width: 330px; height: 360px;" src="img/phone.png" />
+						</div>
+						<div class="yui3-u row-220 split">
+							<span class="floor-x-line"></span>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/sj.jpg" />
+							</div>
+							<div class="floor-conver-pit">
+								<img style="height: 180px;" src="img/s10ss.jpg" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab2" class="tab-pane">
+					<p>第二个</p>
+				</div>
+				<div id="tab9" class="tab-pane">
+					<p>第三个</p>
+				</div>
+				<div id="tab10" class="tab-pane">
+					<p>第4个</p>
+				</div>
+				<div id="tab11" class="tab-pane">
+					<p>第5个</p>
+				</div>
+				<div id="tab12" class="tab-pane">
+					<p>第6个</p>
+				</div>
+				<div id="tab13" class="tab-pane">
+					<p>第7个</p>
+				</div>
+				<div id="tab14" class="tab-pane">
+					<p>第8个</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- 楼层位置 -->
+	<div id="floor-index" class="floor-index">
+		<ul>
+			<li>
+				<a class="num" href="javascript:;" style="display: none;">1F</a>
+				<a class="word" href="javascript;;" style="display: block;">图书教材</a>
+			</li>
+			<li>
+				<a class="num" href="javascript:;" style="display: none;">2F</a>
+				<a class="word" href="javascript;;" style="display: block;">手机通讯</a>
+			</li>
+			<li>
+				<a class="num" href="javascript:;" style="display: none;">3F</a>
+				<a class="word" href="javascript;;" style="display: block;">电脑办公</a>
+			</li>
+			<li>
+				<a class="num" href="javascript:;" style="display: none;">4F</a>
+				<a class="word" href="javascript;;" style="display: block;">衣物鞋帽</a>
+			</li>
+			<li>
+				<a class="num" href="javascript:;" style="display: none;">5F</a>
+				<a class="word" href="javascript;;" style="display: block;">运动户外</a>
+			</li>
+		</ul>
+	</div>
+
+
+
+	<!--购物车单元格 模板-->
+	<script type="text/template" id="tbar-cart-item-template">
+	<div class="tbar-cart-item" >
+		<div class="jtc-item-promo">
+			<em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>
+			<div class="promo-text">已购满600元，您可领赠品</div>
+		</div>
+		<div class="jtc-item-goods">
+			<span class="p-img"><a href="#" target="_blank"><img src="{2}" alt="{1}" height="50" width="50" /></a></span>
+			<div class="p-name">
+				<a href="#">{1}</a>
+			</div>
+			<div class="p-price"><strong>¥{3}</strong>×{4} </div>
+			<a href="#none" class="p-del J-del">删除</a>
+		</div>
+	</div>
+</script>
+
+	<!--侧栏面板结束-->
+	<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#service").hover(function () {
+				$(".service").show();
+			}, function () {
+				$(".service").hide();
+			});
+			$("#shopcar").hover(function () {
+				$("#shopcarlist").show();
+			}, function () {
+				$("#shopcarlist").hide();
+			});
+
+		})
+	</script>
+	<script>
+		$('#aa').on('click', 'a', function () {
+			var a = $(this).text();
+			window.location = 'search.html?key=' + a;
+		})
+
+		$('#tuijian').on('click', 'a', function () {
+			var a = $(this).text();
+			window.location = 'search.html?key=' + a;
+		})
+		
+		$('#like').on('click', 'a', function () {
+			var a = $(this).text();
+			window.location = 'search.html?key=' + a;
+		})
+		$('#floor-1').on('click', 'a', function () {
+			var a = $(this).text();
+			window.location = 'search.html?key=' + a;
+		})
+		$('#floor-2').on('click', 'a', function () {
+			var a = $(this).text();
+			window.location = 'search.html?key=' + a;
+		})
+	</script>
+	<script type="text/javascript" src="js/model/cartModel.js"></script>
+	<script type="text/javascript" src="js/czFunction.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+	<script type="text/javascript" src="js/pages/index.js"></script>
+	<script type="text/javascript" src="js/widget/cartPanelView.js"></script>
+	<script type="text/javascript" src="js/widget/jquery.autocomplete.js"></script>
+	<script type="text/javascript" src="js/widget/nav.js"></script>
+	<!--侧栏面板开始,由js动态加载-->
+	<div class="J-global-toolbar"></div>
+	<script type="text/javascript">$(".J-global-toolbar").load("side.html");</script>
+	<div class="clearfix footer"></div>
+	<script type="text/javascript">$(".footer").load("foot.html");</script>
+</body>
+
+
+</html>

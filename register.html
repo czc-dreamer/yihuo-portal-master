@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人注册</title>
+    <link type="text/css" rel="stylesheet" href="css/ui-base.css">
+    <link type="text/css" rel="stylesheet" href="css/r-main.css">
+    <link type="text/css" rel="stylesheet" href="css/yz.css">
+    <link type="text/css" rel="stylesheet" href="css/dialog.css">
+    <script src="js/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <script src="js/pages/register.js"></script>
+    <script src="js/pages/email.js"></script>
+    <script src="js/pages/yz.js"></script>
+</head>
+
+<body>
+    <!-- widget header begin -->
+    <div class="header">
+        <div class="w">
+            <a href="http://www.yihuo.com/index.html">
+                <img src="img/logo.gif" alt="" width="170px" height="70px">
+            </a>
+            <div class="logo-title">欢迎注册</div>
+            <div class="have-account">已有账号？ <a href="login.html">请登录&gt;</a></div>
+        </div>
+    </div>
+    <!-- widget header end -->
+    <div class="w">
+        <!-- widget progress-bar begin -->
+        <div class="progress-bar clearfix">
+            <div class="pro-step cur-step ">
+                <span class="step-index">1</span>
+                <p class="step-desc">验证手机号</p>
+            </div>
+            <div class="pro-line pro-line1 person-pro-line person-pro-line1 "></div>
+            <div class="pro-step pro-step2 person-pro-step2  ">
+                <span class="step-index">2</span>
+                <p class="step-desc">填写账号信息</p>
+            </div>
+            <div class="pro-line pro-line2 person-pro-line person-pro-line2 "></div>
+            <div class="pro-step pro-step3 person-pro-step3  ">
+                <span class="step-index">3</span>
+                <p class="step-desc">注册成功</p>
+            </div>
+        </div>
+        <!-- widget progress-bar end -->
+        <!-- widget reg-steps begin -->
+        <div class="main ">
+            <div class="reg-form">
+                <form action="#" id="register-form" method="POST">
+                    <div id="step1-wrap">
+                        <div class="item-phone-wrap">
+                            <div class="formItem formItem-phone">
+                                <label class="select-country" id="select-country" country_id="0086">中国 0086</label>
+                                <div class="item-input-wrap">
+                                    <input type="text" id="form-phone" maxlength="11" name="phone" class="field"
+                                        autocomplete="off" placeholder="建议使用常用手机号">
+                                    <i id="pStatus" class="i-status"></i>
+                                    <i id="pCancel" class="i-cancel"></i>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <i></i>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="item-getcode-wrap">
+                            <div class="container">
+                                <div id="captcha" style="position: relative" data-type="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="phonecode" class="item-phonecode-wrap">
+                            <div class="formItem formItem-phonecode">
+                                <div class="phonecode-left">
+                                    <label>手机验证码</label>
+                                    <input type="text" name="mobileCode" id="phoneCode" class="field phonecode"
+                                        placeholder="输入验证码">
+                                    <i class="i-status"></i>
+                                    <i class="i-cancel"></i>
+                                </div>
+                                <button id="getPhoneCode" class="btn-phonecode" type="button">获取验证码</button>
+                                <div class="tip">
+                                    <i></i>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-agreen">
+                        </div>
+                        <div id="step1-next" class="btn-register">下一步</div>
+                    </div>
+                    <div id="step2-wrap">
+                        <div class="register-box" id=“regsterApp”>
+                            <div class="formItem">
+                                <label>用　户　名</label>
+                                <input type="text" id="form-account" name="regName" class="field" autocomplete="off"
+                                    maxlength="20" placeholder="您的账户名和登录名">
+                                <i id="uiStatus" class="i-status"></i>
+                                <i id="uiCancel" class="i-cancel"></i>
+                            </div>
+                            <div class="tip">
+                                <i></i>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="register-box">
+                            <div class="formItem">
+                                <label>设 置 密 码</label>
+                                <input type="password" name="pwd" id="form-pwd" class="field" maxlength="20"
+                                    placeholder="建议使用两种或两种以上字符组合">
+                                <i id="pwdStatus" class="i-status"></i>
+                                <div id="capslock1" class="capslock-tip tips">大写已开启<b class="arrow"></b><b
+                                        class="arrow-inner"></b></div>
+                            </div>
+                            <div class="tip">
+                                <i></i>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="register-box">
+                            <div class="formItem">
+                                <label>确 认 密 码</label>
+                                <input type="password" name="pwdRepeat" id="form-equalTopwd" class="field"
+                                    placeholder="请再次输入密码">
+                                <i id="pwd2Status" class="i-status"></i>
+                                <div id="capslock2" class="capslock-tip tips" style="display: none;">大写已开启<b
+                                        class="arrow"></b><b class="arrow-inner"></b></div>
+                            </div>
+                            <div class="tip">
+                                <i></i>
+                                <span></span>
+                            </div>
+                        </div>
+                        <!-- <div class="register-box">
+                            <div class="item-email-wrap">
+                                <div class="formItem">
+                                    <label>邮 箱 验 证</label>
+                                    <input type="text" name="email" id="form-email" class="field" autocomplete="off"
+                                        maxlength="50" placeholder="请输入邮箱" />
+                                    <i id="eStatus" class="i-status"></i>
+                                </div>
+                                <div class="tip">
+                                    <i></i>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="register-box"> -->
+                        <!-- <div class="item-mailcode-wrap">
+                            <div class="formItem formItem-mailcode">
+                                <div class="mailcode-left">
+                                    <label>邮箱验证码</label>
+                                    <input type="text" name="mailCode" id="mailCode" class="field mailcode" maxlength="6" autocomplete="off" placeholder="请输入邮箱验证码">
+                                    <i></i>
+                                </div>
+                                <button id="getMailCode" class="btn-mailcode" type="button">获取验证码</button>
+                                <div class="tip">
+                                    <i></i>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- </div> -->
+                        <div>
+                            <button type="button" class="btn-register" id="form-register"
+                                @click.stop="submit">立即注册</button>
+                        </div>
+                        <div class="tip">
+                            <i></i>
+                            <span></span>
+                        </div>
+                        <!--<div class="back-btn" id="back-btn">返回上一步</div>-->
+                    </div>
+                </form>
+            </div>
+        </div> <!-- widget reg-steps end -->
+    </div>
+    <!-- widget footer begin -->
+    <div id="form-footer" class="footer w">
+        <div class="links">
+            <a rel="nofollow" target="_blank" href=""> 关于我们</a>|
+            <a rel="nofollow" target="_blank" href="">联系我们</a>|
+            <a rel="nofollow" target="_blank" href="">人才招聘</a>|
+            <a rel="nofollow" target="_blank" href="">商家入驻</a>|
+            <a rel="no  follow" target="_blank" href="">广告服务</a>|
+            <a rel="nofollow" target="_blank" href="">手机lol</a>|
+            <a target="_blank" href="">友情链接</a>|
+            <a target="_blank" href="">销售联盟</a>|
+            <a href="" target="_blank">adidas社区</a>|
+            <a href="" target="_blank">adidas公益</a>|
+            <a target="_blank" href="">English Site</a>
+        </div>
+        <div class="copyright">
+            Copyright&copy;2004-2019&nbsp;&nbsp;**.com&nbsp;版权所有
+        </div>
+    </div>
+    <!-- widget footer end -->
+    <div id="ui-dialog" class="ui-dialog"
+        style="width: 947px; position: fixed; z-index: 10000; display: block; overflow: hidden; top: 2.5px; left: 350px;">
+        <div class="ui-dialog-title" style="width: 927px;"> <span>**用户注册协议和隐私政策</span> </div>
+        <div class="ui-dialog-content" style="height: 530px; width: 927px; overflow: hidden;">
+            <div class="protocol" onselectstart="return false" ondrag="return false" oncontextmenu="return false">
+                <div class="protocol-con">
+                    <div class="WordSection1">
+                        <div style="layout-grid:15.6pt">
+                            <p class="MsoNormal" align="left" style="text-align:left;line-height:15.0pt;
+              mso-pagination:widow-orphan;mso-outline-level:3;vertical-align:baseline"><b><span lang="EN-US" style="font-size:11.5pt;font-family:&quot;微软雅黑&quot;,sans-serif;mso-bidi-font-family:
+              宋体;color:#1F1F1F;mso-font-kerning:0pt">
+                                        <o:p>&nbsp;</o:p>
+                                    </span></b></p>
+                            <p class="MsoNormal" align="left" style="text-align:left;line-height:15.0pt;
+              mso-pagination:widow-orphan;mso-outline-level:3;vertical-align:baseline"><b><span
+                                        style="font-size:11.5pt;font-family:&quot;微软雅黑&quot;,sans-serif;mso-bidi-font-family:
+              宋体;color:#1F1F1F;mso-font-kerning:0pt">在您注册成为**用户的过程中，您需要完成我们的注册流程并通过点击同意的形式在线签署以下协议，请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制。）：<span
+                                            lang="EN-US">
+                                            <o:p></o:p>
+                                        </span></span></b></p>
+                            <p class="MsoNormal" align="left" style="text-align:left;line-height:15.0pt;
+              mso-pagination:widow-orphan;mso-outline-level:3;vertical-align:baseline"><b><span style="font-size:11.5pt;font-family:&quot;微软雅黑&quot;,sans-serif;mso-bidi-font-family:
+              宋体;color:red;mso-font-kerning:0pt">《<span lang="EN-US"><a
+                                                href="https://in.m.jd.com/help/app/register_info.html"
+                                                target="_blank"><span lang="EN-US" style="color:red"><span
+                                                        lang="EN-US">**用户注册协议</span></span></a></span>》</span></b><b><span
+                                        lang="EN-US" style="font-size:11.5pt;font-family:&quot;微软雅黑&quot;,sans-serif;mso-bidi-font-family:
+              宋体;color:#1F1F1F;mso-font-kerning:0pt">
+                                        <o:p></o:p>
+                                    </span></b></p>
+                            <b><u><span lang="EN-US" style="font-size:11.5pt;font-family:&quot;微软雅黑&quot;,sans-serif;
+              mso-bidi-font-family:宋体;color:#1F1F1F;mso-ansi-language:EN-US;mso-fareast-language:
+              ZH-CN;mso-bidi-language:AR-SA"><br clear="all" style="page-break-before:auto;
+              mso-break-type:section-break">
+                                    </span></u></b>
+                        </div>
+                    </div>
+                    <div id="protocolContactHash"></div>
+                    <div id="protocolCancelTips"></div>
+                </div>
+                <div class="protocol-button" style="text-align:center"><a
+                        style="display: inline-block;width: 200px;height: 54px; line-height: 54px;color: #999;vertical-align: middle;margin-right: 30px;background: #e3e4e5;font-size: 16px; "
+                        href="home.html">取消</a><button onclick="uiDialogClose()"
+                        style="    display: inline-block;width: 200px;vertical-align: middle;">同意并继续</button></div>
+            </div>
+        </div><a class="ui-dialog-close" title="关闭" href="home.html"><span class="ui-icon ui-icon-delete"></span></a>
+    </div>
+    <div id="ui-mask" class="ui-mask"
+        style="position: absolute; left: 0px; top: 0px; opacity: 0.15; z-index: 9998; display: block; background-color: rgb(0, 0, 0); width: 1684px; height: 959px;">
+    </div>
+
+    <script type="text/javascript">
+        var uiDialog = document.getElementById('ui-dialog');
+        var uiMask = document.getElementById('ui-mask');
+        var btnContinue = document.getElementById('btn-continue');
+
+        function uiDialogClose() {
+            uiDialog.style.display = "none";
+            uiMask.style.display = "none";
+        }
+    </script>
+    <!-- dialog end -->
+    <!-- <script>
+        $("#form-email").mailAutoComplete(); //使用方法
+    </script> -->
+    <script type="text/javascript">
+        jQuery.noConflict();
+    </script>
+    <script>
+        var flag = false;
+        jigsaw.init(document.getElementById('captcha'), function () {
+            flag = true;
+        })
+    </script>
+</body>
+</html>

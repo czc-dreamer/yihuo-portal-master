@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>求购专区</title>
+    <link rel="icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/want_list.css" />
+    <style>
+        .pages {
+            text-align: center;
+        }
+
+        .page-arrow,
+        .page-num,
+        .pages span {
+            display: inline-block;
+            height: 40px;
+            font-size: 1.33em;
+            color: rgb(255, 255, 255);
+            line-height: 40px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .page-num,
+        .page-arrow {
+            width: 40px;
+            margin: 0px 5px;
+            background-color: rgb(255, 197, 0);
+            text-decoration: none;
+        }
+
+        .page-num.cur {
+            background-color: rgb(68, 193, 165);
+        }
+
+        .page-num:hover {
+            background-color: rgb(68, 193, 165);
+        }
+
+        .page-arrow {
+            width: 85px;
+            height: 40px;
+            background: transparent url('./img/page-arrow.png') no-repeat scroll 0% 0%;
+        }
+
+        .arrow-left {
+            text-align: right;
+            background-position: -10px -10px;
+        }
+
+        .arrow-left::after {
+            content: "";
+            margin-right: 0.5em;
+        }
+
+        .arrow-right {
+            text-align: left;
+            background-position: -10px -60px;
+        }
+
+        .arrow-right::before {
+            content: "";
+            margin-right: 0.5em;
+        }
+
+        .arrow-right:hover {
+            background-position: -10px -160px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 头部栏位 -->
+    <!--页面顶部，由js动态加载-->
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#service").hover(function () {
+                $(".service").show();
+            }, function () {
+                $(".service").hide();
+            });
+            $("#shopcar").hover(function () {
+                $("#shopcarlist").show();
+            }, function () {
+                $("#shopcarlist").hide();
+            });
+
+        })
+    </script>
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="js/widget/nav.js"></script>
+
+    <div id="wantDetail">
+        <!-- 头部栏位 -->
+        <div id="nav-bottom">
+            <yh-top />
+        </div>
+        <div style="background-color: rebeccapurple;">
+            <div class="main center clearfix">
+                <div class="wrap-want-list">
+                    <ul class="want-list" id="want-list">
+                        <li class="want-item">
+                            <div class="want-li clearfix" v-for="want in wantList">
+                                <div class="left">
+                                    <a href="">
+                                        <img :src=want.userRS.head alt="头像">
+                                    </a>
+                                </div>
+                                <div class="right">
+                                    <h4 class="want-name">【求购】
+                                        <span>{{want.title}}</span>
+                                    </h4>
+                                    <p class="want-detail">{{want.content}}</p>
+                                    <p class="want-attr">
+                                        <span>期望价格</span>
+                                        <span class="want-price">{{want.sell_price}}</span>
+                                        <span>期望交易地点：</span>
+                                        <span class="want-add">{{want.trade_place}}</span>
+                                        <span>{{formatDate(want.create_time)}}</span>
+                                    </p>
+                                    <p class="want-contact">
+                                    </p>
+                                    <p class="want-person">{{want.userRS.username}}</p>
+                                    <span class="mr10">TEL：{{want.userRS.phone}}</span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- 分页 开始 -->
+                <div class="pages">
+                    <a class="page-arrow arrow-left" href="javascript:void(0)">首页</a>
+                    <a class="page-num cur" href="javascript:void(0)">1</a>
+                    <a class="page-arrow arrow-right" href="javascript:void(0)">尾页</a>
+                </div>
+                <!-- 分页 结束 -->
+            </div>
+        </div>
+    </div>
+    <!-- 底部栏位 -->
+    <!--页面底部，由js动态加载-->
+    <div class="clearfix footer"></div>
+    <script type="text/javascript">$(".footer").load("foot.html");</script>
+    <!--页面底部END-->
+    <script src="./js/vue/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/plugins/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        var wantDetailvm = new Vue({
+            el: "#wantDetail",
+            data: {
+                userHead: '',
+                phone: '',
+                user: {},
+                user_id: [],
+                total: 0, //总条数
+                totalPage: 0,//总页数
+                search: {
+                    page: 0
+                },
+                wantList: [],
+                total: 0, //总条数
+                totalPage: 0,//总页数
+            },
+            components: {
+                yhTop: () => import('./js/pages/top.js')
+            },
+            created() {
+                // 验证登录，查询用户信息
+
+
+                // 查询订单信息
+                this.loadData();
+
+            },
+            methods: {
+
+                navPage() {
+                    this.search.page = this.$refs.page.value;
+                },
+                index(i) {
+                    if (this.search.page <= 3 || this.totalPage <= 5) {
+                        // 如果当前页小于等于3或者总页数小于等于5
+                        return i;
+                    } else if (this.search.page > this.totalPage - 3) {
+                        //当前页码大于totalPage-3，应该从totalPage-5开始
+                        return this.totalPage - 5 + i;
+                    } else if (this.search.page > 3) {
+                        // 如果当前页大于3，应该从page-3开始
+                        return this.search.page - 3 + i;
+                    }
+                },
+                prevPage() {
+                    if (this.search.page > 1) {
+                        this.search.page--
+                    }
+                },
+                nextPage() {
+                    if (this.search.page < this.totalPage) {
+                        this.search.page++
+                    }
+                },
+                logout() {
+                    // 删除cookie中的token即可
+                    Cookies.remove("YH_TOKEN", {
+                        path: "/",
+                        domain: "yihuo.com"
+                    });
+                    window.location = 'http://www.yihuo.com'
+                },
+                gotoLogin() {
+                    window.location = "login.html?returnUrl=" + window.location;
+                },
+                loadData() {
+
+                    yh.http.get("/item/want/page", this.search).then((resp) => {
+                        this.wantList = resp.data.items;
+                        this.total = resp.data.total; console.log("total:" + this.total)
+                        this.totalPage = resp.data.totalPage;
+                    }).catch(() => this.wantList = [])
+
+
+                },
+                formatDate: yh.formatDate,
+            },
+
+        });
+    </script>
+</body>
+
+</html>

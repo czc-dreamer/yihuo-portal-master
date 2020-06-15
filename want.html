@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>发布页面</title>
+
+    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" href="css/release_product.css" />
+
+    <script src="js/plugins/jquery/jquery.min.js"></script>
+    <style>
+        .wantInfo-release-title {
+            width: 150px;
+            height: 36px;
+            margin: 12px auto 0px;
+            background: transparent url('./img/want-product-title.png') no-repeat scroll 0% 0%;
+            text-indent: -9999em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="publishApp">
+
+        <div class="top">
+            <shortcut />
+        </div>
+
+        <div class="cart py-container">
+
+            <!--logoArea-->
+            <div class="logoArea" style="height: 50px;">
+                <a href="index.html"><img src="img/logo.gif" style="height: 50px;" alt=""></a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main center">
+                <div class="wave-fluid"></div>
+                <div class="wantInfo-release-title">编辑求购物品</div>
+                <form action="publish" id="publish-form" method="post">
+                <div class="form-wr">
+                    <div class="form-must-wr">
+                        <div class="form-item l goods-title">
+                            <div class="form-key">
+                                <span>商品名称</span></div>
+                            <div class="form-value">
+                                <div class="form-input-wr">
+                                    <input id="title" name="name" placeholder="最多18个字" maxlength="18" value="" type="text" class="required" tips="请填写商品名称"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-item xl goods-desc">
+                            <div class="form-key">
+                                <span>商品详情</span></div>
+                            <div class="form-value">
+                                <div class="form-input-wr">
+                                    <textarea name="content" id="desc" placeholder="建议填写物品用途、新旧程度、原价等信息，至少15个字" class="required" tips="请填写详情描述"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-item l goods-title">
+                            <div class="form-key">
+                                <span>期望交易地点</span></div>
+                            <div class="form-value">
+                                <div class="form-input-wr">
+                                    <input class="required" id="tradePlace" name="tradePlace" value="" type="text" tips="请填写期望交易地点"></div>
+                            </div>
+                        </div>
+                        <div class="form-item l goods-price">
+                            <div class="form-key">
+                                <span>期望价格</span></div>
+                            <div class="form-value">
+                                <div class="form-input-wr">
+                                    <input class="price required" id="sellPrice" name="sellPrice" value="" type="number" tips="请填写期望价格"></div>
+                            </div>
+                        </div>
+                    </div>
+                   	<input class="form-submit" id="submit-btn" type="button" value="发布" @click="submitBtn"/>
+                  </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <script src="./js/vue/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script type="text/javascript">
+        var cartVm = new Vue({
+            el: "#publishApp",
+            data: {
+                yh,
+                // cid: '0',
+            },
+            components: {
+                shortcut: () => import("/js/pages/shortcut.js")
+            },
+            created() {
+                this.loadCarts();
+                this.loadCid();
+            },
+            mounted: {
+
+            },
+            methods: {
+
+                loadCarts() {
+                    //1.先判断登录状态
+                    yh.verifyUser().then(res => {
+                        //2.已经登录
+                        yihuo.http.get("/auth/verify").then(({ data }) => {
+                            console.log("返回值=" + data)
+                            userId = data.id
+                            return userId;
+                        }).catch(() => {
+                            console.log("查询失败")
+                        })
+                    }).catch(() => {
+                        //3.未登陆
+                        console.log("请先登录")
+                        window.location.href = 'http://www.yihuo.com/login.html'
+                    })
+                },
+                
+               
+                submitBtn() {
+                    var flag = true;
+                    // var userId=this.loadCarts();
+                    // var detail=$("#desc").val()
+                    // var title=$("#name").val();
+                    // var buyPrice=$("#buyPrice").val()
+                    // var sellPrice=$("sellPrice").val()
+                    // var cid=$("#cid2").val()
+                    $(".required").each(function (i, e) {
+                        if ($(e).val() == '') {
+                            alert($(e).attr('tips'));
+                            flag = false;
+                            return false;
+                        }
+                    });
+                    if (flag) {
+
+                        if ($("#title").val().length < 5) {
+                            alert('请填写商品名称');
+                            return;
+                        }
+                        if ($("#desc").val().length < 5) {
+                            alert('详情描述不能少于5个字！');
+                            return;
+                        }
+                        if (parseFloat($("#tradePlace").val()) == 'NaN') {
+                            alert('期待交易地点只能输入数字！');
+                            return;
+                        }
+                        if (parseFloat($("#sellPrice").val()) == 'NaN') {
+                            alert('期待价格只能输入数字！');
+                            return;
+                        }
+       
+                        var str = {
+                            "user_id": userId,
+                            "name":$("#title").val(),
+                            "content":$("#desc").val(),
+                            "sell_price": $("#sellPrice").val()*100,
+                            "trade_place":$("#tradePlace").val()
+                        }
+                        //全部符合，准备提交表单
+                        $.ajax({
+                            url: 'http://api.yihuo.com/api/item/want/want',
+                            type: 'POST',
+                            contentType: "application/json",
+                            data: JSON.stringify(str)
+                        });
+                    }
+                },
+
+            }
+        })
+    </script>
+
+    <!-- 底部栏位 -->
+    <!--页面底部，由js动态加载-->
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <div class="clearfix footer"></div>
+    <script type="text/javascript">$(".footer").load("foot.html");</script>
+    <!--页面底部END-->
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="js/widget/nav.js"></script>
+
+</body>
+
+</html>

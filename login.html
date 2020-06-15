@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/login-base.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script src="js/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/pages/jquery.login.js" type="text/javascript"></script>
+    <title>登录页面</title>
+</head>
+
+<body>
+    <!-- **************头部页面开始****** -->
+    <div class="w">
+        <div id="logo">
+            <a href="http://www.yihuo.com/index.html">
+                <img src="img/logo.gif" alt="">
+            </a>
+            <b></b>
+        </div>
+        <!-- 左边登录logo结束 -->
+        <a href="#" class="q-link" target="_blank">
+            <b></b>
+            登录页面，调查问卷
+        </a>
+    </div>
+    <!-- ************头部页面结束********** -->
+    <div id="content">
+        <div class="tips-wrapper">
+            <div class="tips-inner">
+                <div class="cont-wrapper"><i class="icon-tips"></i>
+                    <p>依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版<a href="https://about.jd.com/privacy/" class="black"
+                            target="_blank">《****隐私政策》</a>已上线，将更有利于保护您的个人隐私。</p>
+                </div>
+            </div>
+        </div>
+        <!-- login-wrapk开始 -->
+        <div class="login-wrap" id="loginApp">
+            <!-- w开始 -->
+            <div class="w">
+                <!-- *****************登录页面开始************ -->
+                <div class="login-no-qlogin" id="login">
+                    <div id="header" class="header">
+
+                    </div>
+                    <div class="qrcode-switch" id="qrcode_switch">
+                        <a class="qrcode-switch-logo" id="qrcode_switch_logo" href="javascript:void(0)"
+                            title="二维码登录"></a>
+                    </div>
+                    <div class="account-qrcode-login" id="account_qrcode_login">
+                        <div class="account-login" id="account_login">
+                            <div class="tips" id="tips">
+                                <div class="error-tips" id="error_tips">
+                                    <span class="error-logo" id="error_logo"></span>
+                                    <span class="err-m" id="err_m"></span>
+                                </div>
+                                <div class="operate-tips" id="operate_tips">
+                                    <span class="operate-content">手机号码也可登录哦，<a class="tips-link" id="bind_account"
+                                            href="javascript:void(0);">登录个人中心绑定</a>
+                                    </span>
+                                    <span class="down-row"></span>
+                                </div>
+                                <div class="loading-tips" id="loading_tips">
+                                    <span id="loading_wording">登录中</span>
+                                    <img src="img/login/load.gif" alt="加载中..." />
+                                </div>
+                            </div>
+                            <div class="login-form">
+                                <form id="loginform" name="loginform">
+                                    <div class="accArea" id="accArea">
+                                        <label class="input-tips" id="acc_tips" for="acc">用户名/手机/邮箱</label>
+                                        <div class="edge">
+                                            <input type="text" class="inputstyle" id="acc" name="acc" tabindex="1"
+                                                autocomplete="off" v-model="form.username" />
+                                            <a class="acc-del" id="acc_del" href="javascript:void(0);"></a>
+                                        </div>
+                                        <ul class="email-list" id="email_list"></ul>
+                                    </div>
+                                    <div class="pwdArea" id="pwdArea">
+                                        <label class="input-tips" id="pwd_tips" for="p">密码</label>
+                                        <div class="edge">
+                                            <input type="password" class="inputstyle password" id="p" name="p"
+                                                maxlength="16" tabindex="2" v-model="form.password" />
+                                        </div>
+                                        <div class="lock-tips" id="caps_lock_tips">
+                                            <span class="lock-tips-row"></span>
+                                            <span>大写锁定已打开
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="submit">
+                                        <a class="login-button" href="javascript:void(0);">
+                                            <input type="button" tabindex="6" value="登 录" class="btn" id="login_button"
+                                                @click="login" />
+                                        </a>
+                                        <a href="#" class="forget-pw" target="_blank">忘了密码？
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="bottom" id="bottom_account">
+                                <ul>
+                                    <li>
+                                        <b></b>
+                                        <a href="javascript:void(0)" class="pdl">
+                                            <b class="QQ-icon"></b>
+                                            <span>QQ</span>
+                                        </a>
+                                        <span class="line">|</span>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="pdl">
+                                            <b class="weixin-icon"></b>
+                                            <span>微信</span>
+                                        </a>
+                                    </li>
+                                    <li class="registe">
+                                        <a href="http://www.yihuo.com/register.html" class="link" target="_blank">注册新帐号</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="qrcode-login" id="qrcode_login">
+                            <div class="qrcode-step">
+                                <div class="qrcode-tips">
+                                    请用手机app<a class="qrcode-link" href="http://www.17sucai.com/"
+                                        target="_blank">跳骚市场</a>扫描二维码
+                                </div>
+                                <div class="qrcode-login-bg"></div>
+                                <img class="qrcode-login-img" id="qrcode-login_img" src="img/login/ptqrcodeshow.png"
+                                    alt="" />
+                            </div>
+                            <div class="bottom" id="bottom_qrcode">
+                                <ul>
+                                    <li>
+                                        <b></b>
+                                        <a href="javascript:void(0)" class="pdl">
+                                            <b class="QQ-icon"></b>
+                                            <span>QQ</span>
+                                        </a>
+                                        <span class="line">|</span>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="pdl">
+                                            <b class="weixin-icon"></b>
+                                            <span>微信</span>
+                                        </a>
+                                        <span class="line">|</span>
+                                    </li>
+                                    <li class="registe">
+                                        <a href="http://www.yihuo.com/register.html" class="link" target="_blank">注册新帐号</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- w结束 -->
+            <!-- 中间广告部分开始 -->
+            <div class="login-banner">
+                <img src="img/login/loginBackground.png">
+            </div>
+            <!-- 中间背景广告结束 -->
+        </div>
+        <!-- login-wrap结束 -->
+    </div>
+    <!-- 内容部分结束 -->
+    <!-- 底部页面开始 -->
+    <!-- <div class="w"> -->
+    <div id="footer">
+        <div><img src="./img/login/foot.png"></div>
+        <div class="links">
+            <a href="">关于我们</a>
+            |
+            <a href="">联系我们</a>
+            |
+            <a href="">人才招聘</a>
+            |
+            <a href="">商家入驻</a>
+            |
+            <a href="">广告服务</a>
+            |
+            <a href="">手机跳骚</a>
+            |
+            <a href="">友情链接</a>
+            |
+            <a href="">销售联盟</a>
+            |
+            <a href="">跳骚社区</a>
+            |
+            <a href="">跳骚公益</a>
+            |
+            <a href="">English site</a>
+        </div>
+    </div>
+    <!--     </div> -->
+    <!-- 底部页面结束 -->
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="js/pages/login.js"></script>
+</body>
+<script src="./js/vue/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/common.js"></script>
+
+<script type="text/javascript">
+    var loginVm = new Vue({
+        el: "#loginApp",
+        data: {
+            form: {
+                username: '',
+                password: ''
+            }
+        },
+        mounted: function () {
+            var $win = $(window),
+                $loginDiv = $('._login_div_quick_'),
+                $login = $('#login_button'),
+                $errTip = $('#error_tips'),
+                $capsLock = $('#caps_lock_tips'),
+                // showLogin = function() {
+                //     $loginDiv.css({
+                //         top: ($win.height() - $loginDiv.height()) / 2 + 'px',
+                //         left: ($win.width() - $loginDiv.width()) / 2 + 'px',
+                //         display: 'block'
+                //     });
+                // },
+                $accTip = $('#acc_tips'),
+                $passTip = $('#pwd_tips'),
+                $operateTip = $('#operate_tips'),
+                $delAccInput = $('#acc_del'),
+                $acc = $('#acc'),
+                $p = $('#p'),
+                $switch = $('#qrcode_switch_logo'),
+                $qrcode = $('#account_qrcode_login_show');
+            $account_login = $('#account_login');
+            $qrcode_login = $('#qrcode_login');
+            // $(loginBtn).click(function() { showLogin(); });
+            $win.resize(function () { if ($loginDiv.is(':visible')) { showLogin(); } });
+            // $('#close').click(function() { $loginDiv.hide(); });
+            $acc.add($p).bind({
+                'focus': function () {
+                    var $this = $(this),
+                        $currTip = $this.attr('id') === 'acc' ? ($operateTip.show(), $accTip) : $passTip;
+                    $this.parent().css('background-position-y', '-45px');
+                    $currTip.css('color', '#ddd');
+                },
+                'blur': function () {
+                    var $this = $(this),
+                        $currTip = $this.attr('id') === 'acc' ? ($operateTip.hide(), $accTip) : $passTip;
+                    $this.parent().css('background-position-y', '-1px');
+                    $currTip.css('color', '#aaa');
+                    if ($currTip === $passTip && $capsLock.is(':visible')) { $capsLock.hide(); }
+                },
+                'input': function (e) {
+                    var $this = $(this),
+                        $currTip = $this.attr('id') === 'acc' ? $accTip : $passTip;
+                    if ($this.val()) {
+                        if ($currTip.is(':visible')) {
+                            $currTip.hide();
+                            if ($currTip === $accTip) { $delAccInput.show(); }
+                        }
+                    } else {
+                        $currTip.show();
+                        if ($currTip === $accTip) { $delAccInput.hide(); }
+                    }
+                }
+            });
+            $p.keypress(function (e) {
+                if (((e.keyCode >= 65 && e.keyCode <= 90) && !e.shiftKey) || ((e.keyCode >= 97 && e.keyCode <= 122) && e.shiftKey)) { $capsLock.show(); } else { $capsLock.hide(); }
+            });
+            $delAccInput.click(function () {
+                $acc.val('').focus();
+                $accTip.show();
+                $delAccInput.hide();
+            });
+            $switch.click(function () {
+                if ($switch.attr('class') === 'qrcode-switch-logo') {
+                    $switch.attr('class', 'qrcode-switch-logo-qrcode');
+                    account_login.style.display = "none";
+                    qrcode_login.style.display = "block";
+                } else {
+                    $switch.attr('class', 'qrcode-switch-logo');
+                    // $qrcode.animate({ top: '0px' }, 200);
+                    account_login.style.display = "block";
+                    qrcode_login.style.display = "none";
+                }
+            });
+            $login.click(function () {
+                if (!$acc.val()) {
+                    $errTip.find('#err_m').text('请输入正确的用户名/手机/邮箱！').end().show();
+                    setTimeout(function () { $errTip.hide(); }, 5000);
+                    return false;
+                } else if (!$p.val()) {
+                    $errTip.find('#err_m').text('您还没有输入密码！').end().show();
+                    setTimeout(function () { $errTip.hide(); }, 5000);
+                    return false;
+                }
+            });
+        },
+        methods: {
+
+            erra() {
+                $errTip = $('#error_tips'),
+                    $errTip.find('#err_m').text('用户名或密码错误！').end().show();
+            },
+
+            login() {
+                $errTip = $('#error_tips'),
+                $acc = $('#acc'),
+                    $p = $('#p')
+
+                if (!$acc.val()) {
+                    $errTip.find('#err_m').text('请输入正确的用户名/手机/邮箱！').end().show();
+                    setTimeout(function () { $errTip.hide(); }, 5000);
+                    return false;
+                } else if (!$p.val()) {
+                    $errTip.find('#err_m').text('您还没有输入密码！').end().show();
+                    setTimeout(function () { $errTip.hide(); }, 5000);
+                    return false;
+                } else {
+                    yihuo.http.post("/auth/accredit", yihuo.stringify(this.form))
+                        .then(resp => {
+                            if (resp.status === 200) {
+                                //1 登录成功
+                                //1.1 检查LocalStorage中是否有数据
+                                const temp = yh.store.get("carts");
+                                if (temp !== null) {
+                                    //1.2有数据，传到后台与redis数据库中的融合
+                                    temp.forEach(s => {
+                                        yihuo.http.post("/cart", { skuId: s.skuId, num: s.num }).then()
+                                    });
+                                    //1.3合并完毕，删除本地数据
+                                    yh.store.del("carts");
+
+                                }
+                                const url = yihuo.getUrlParam("returnUrl");
+                                window.location = url || 'http://www.yihuo.com';
+                            }
+                        })
+                        .catch(() => this.erra())
+                }
+
+            }
+        }
+    });
+</script>
+
+</html>

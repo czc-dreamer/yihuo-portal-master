@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>设置-个人信息</title>
+    <link rel="icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
+</head>
+
+<body>
+    <!--页面顶部白条条，由js动态加载-->
+    <div class="nav-bottom"></div>
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript">$(".nav-bottom").load("top.html");</script>
+
+    
+    <script type="text/javascript">
+        $(function () {
+            $("#service").hover(function () {
+                $(".service").show();
+            }, function () {
+                $(".service").hide();
+            });
+            $("#shopcar").hover(function () {
+                $("#shopcarlist").show();
+            }, function () {
+                $("#shopcarlist").hide();
+            });
+
+        })
+    </script>
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="js/widget/nav.js"></script>
+</body>
+<!--header-->
+<div id="account">
+    <div class="py-container">
+        <div class="yui3-g home">
+            <!--左侧列表-->
+            <div class="yui3-u-1-6 list">
+
+                <div class="person-info">
+                    <div class="person-photo"><img :src=userHead alt=""></div>
+                    <div class="person-account">
+                        <span class="name">{{user.username}}</span>
+                        <span class="safe">账户安全</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="list-items">
+                    <dl>
+                        <dt><i>·</i> 订单中心</dt>
+                        <dd><a href="home-index.html">我的订单</a></dd>
+                        <dd><a href="home-order-pay.html">待付款</a></dd>
+                        <dd><a href="home-order-send.html">待发货</a></dd>
+                        <dd><a href="home-order-receive.html">待收货</a></dd>
+                        <dd><a href="home-order-evaluate.html">待评价</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><i>·</i> 我的中心</dt>
+                        <dd><a href="home-person-collect.html">我的收藏</a></dd>
+                        <dd><a href="home-person-footmark.html">我的足迹</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><i>·</i> 物流消息</dt>
+                    </dl>
+                    <dl>
+                        <dt><i>·</i> 设置</dt>
+                        <dd><a href="home-setting-info.html">个人信息</a></dd>
+                        <dd><a href="home-setting-address.html" class="list-active">地址管理</a></dd>
+                        <dd><a href="home-setting-safe.html">安全管理</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <!--右侧主内容-->
+            <div class="yui3-u-5-6">
+                <div class="body userAddress">
+                    <div class="address-title">
+                        <span class="title">地址管理</span>
+                        <a data-toggle="modal" data-target=".edit" data-keyboard="false"
+                            class="sui-btn  btn-info add-new">添加新地址</a>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="address-detail">
+                        <table class="sui-table table-bordered" v-for="(a,i) in addresses" :key="i">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>地址</th>
+                                    <th>联系电话</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{a.name}}</td>
+                                    <td>{{a.state + a.city + a.district + a.address}}</td>
+                                    <td>{{a.phone}}</td>
+                                    <td>
+                                        <a data-toggle="modal" @click="editAddress(a.id)" data-target=".edit" data-keyboard="false" >编辑</a>
+                                        <a href="javascript:;" @click="deleteAddress(a.id)">删除</a>
+                                        <span class="base" v-if="a.defaultAddress">默认地址</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--新增地址弹出层-->
+                    <div tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" @click="clear" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+                              <h4 id="myModalLabel" class="modal-title">{{isEdit ? "编辑" : "添加"}}收货地址</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="myform" action="" class="sui-form form-horizontal">
+                                  <div class="control-group">
+                                      <label class="control-label">收货人：</label>
+                                      <div class="controls">
+                                        <input type="text" v-model="addressForm.name" class="input-medium">
+                                      </div>
+                                  </div>
+                                  <div class="control-group">
+                                      <label class="control-label">联系电话：</label>
+                                      <div class="controls">
+                                          <input type="text" v-model="addressForm.phone" class="input-medium">
+                                      </div>
+                                  </div>
+                                  <div class="control-group">
+                                      <label class="control-label">省：</label>
+                                      <div class="controls">
+                                          <input type="text" v-model="addressForm.state" class="input-medium">
+                                      </div>
+                                  </div>
+                                  <div class="control-group">
+                                      <label class="control-label">市：</label>
+                                      <div class="controls">
+                                          <input type="text" v-model="addressForm.city" class="input-medium">
+                                      </div>
+                                  </div>
+                                  <div class="control-group">
+                                      <label class="control-label">区/县：</label>
+                                      <div class="controls">
+                                          <input type="text" v-model="addressForm.district" class="input-medium">
+                                      </div>
+                                  </div>
+
+                                  <div class="control-group">
+                                      <label class="control-label">邮编：</label>
+                                      <div class="controls">
+                                          <input type="text" v-model="addressForm.zipCode" class="input-medium">
+                                      </div>
+                                  </div>
+                                     
+                                  <div class="control-group">
+                                      <label class="control-label">详细地址：</label>
+                                      <div class="controls">
+                                        <input type="text" v-model="addressForm.address" class="input-large">
+                                      </div>
+                                  </div>
+                                  <div class="control-group">
+                                      <label class="control-label">地址标签：</label>
+                                      <div class="controls">
+                                          <select class="select" v-model="addressForm.label">
+                                              <option value="家">家</option>
+                                              <option value="公司">公司</option>
+                                              <option value="学校">学校</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div class="control-group">
+                                      <div  style="margin-left: 100px">
+                                          <input type="checkbox" v-model="addressForm.defaultAddress" class="checkbox">设为默认收货地址
+                                      </div>
+                                  </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" @click="addressSave" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>
+                              <button type="button" @click="clear" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部栏位 -->
+<!--页面底部，由js动态加载-->
+<div class="clearfix footer"></div>
+<script type="text/javascript">$(".footer").load("foot.html");</script>
+<!--页面底部END-->
+<script src="./js/vue/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/plugins/jquery/jquery.cookie.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#account",
+        data: {
+            userHead: '',
+            user: {},
+            orders: [],
+            total: 0, //总条数
+            totalPage: 0,//总页数
+            isEdit:false, //新增或修改标记
+            query: {
+                status: 0,
+                page: 1,
+                rows: 5
+            },
+            addressForm: {		//保存form表单中的地址信息
+                name: '',  //收货人
+                phone: '', //收货人电话
+                zipCode: '', //收货人邮编
+                state: '',   //省份
+                city: '',  //市
+                district: '', // 区/县
+                address: '', //详细地址
+                label: '', //标签
+                defaultAddress: false //是否为默认地址
+            },
+            addresses: [// 可选地址列表,假数据，需要从后台查询
+                {}, {}, {}, {}, {}, {},
+            ],
+        },
+        components: {
+            yhTop: () => import('./js/pages/top.js')
+        },
+        created() {
+            //加载数据
+            this.orderDetail = "none";
+            this.loadOrder();
+        },
+        methods: {
+            clear(){
+                    this.addressForm ={};
+                    document.getElementById("myform").reset();
+                },
+            addAddress() {
+                this.isEdit = false;
+                this.clear();
+            },
+            addressSave() {
+                //1.验证是否登录
+                yh.verifyUser().then(() => {
+                    //2.登录，发起请求，保存或者修改地址
+                    if (this.isEdit === false) {
+                        //2.1新增
+                        yh.http.post("/address", this.addressForm).then(() => {
+                            //保存成功，重新加载数据
+                            this.loadData();
+                            //清空表单
+                            this.clear();
+                        }).catch()
+                    } else {
+                        //2.2 修改
+                        yh.http.put("/address", this.addressForm).then(() => {
+                            //修改成功，重新加载数据
+                            this.loadData();
+                            //清空表单
+                            this.clear();
+                        }).catch()
+                    }
+                }).catch(() => {
+                    //3.未登录
+                    window.location.href = "/login.html?returnUrl=" + window.location.href;
+                });
+            },
+            deleteAddress(id) {
+                yh.verifyUser().then(() => {
+                    yh.http.delete("/address/" + id).then(() => {
+                        this.loadData();
+                    })
+                }).catch(() => {
+                    window.location.href = "/login.html?returnUrl=" + window.location.href;
+                });
+            },
+            editAddress(id) {
+                this.isEdit = true;
+                yh.verifyUser().then(() => {
+                    yh.http.get("address/" + id).then(({ data }) => {
+                        this.addressForm = data;
+                    })
+                }).catch(() => {
+                    window.location = "/login.html?returnUrl=" + window.location.href;
+                })
+            },
+            gotoLogin() {
+                window.location = "login.html?returnUrl=" + window.location;
+            },
+            loadOrder() {
+                yh.verifyUser().then(resp => {
+                    // 查询用户信息
+                    this.user = resp.data;
+                    yh.http.get("/user/queryUserInfo/" + this.user.id).then((UInfo) => {
+
+                        var obj = UInfo.data
+                        console.log(obj)
+                        this.userHead = obj[0].head
+                    })
+                    yh.http.get("address").then(({data}) => {
+                        console.log(data)
+                    })
+                    yh.http.get("/address").then(({ data }) => {
+                        //对data进行处理，把默认地址放在第一位
+                        let temp;
+                        for (let i = 0; i < data.length; i++) {
+                            if (data[i].defaultAddress) {
+                                temp = data[0];
+                                data[0] = data[i];
+                                data[i] = temp;
+                                break;
+                            }
+                        }
+                        this.addresses = data;
+                    })
+                }).catch(() => {
+                    // 去登录
+                    this.gotoLogin();
+                });
+            },
+        },
+        watch: {
+            'query': {
+                deep: true,
+                handler() {
+                    this.loadOrder();
+                }
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>发布页面</title>
+
+    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link rel="stylesheet" type="text/css" href="css/release_product.css" />
+
+    <script src="js/plugins/jquery/jquery.min.js"></script>
+    <style>
+        .release-title {
+            width: 150px;
+            height: 36px;
+            margin: 12px auto 0px;
+            background: transparent url('./img/release-title.png') no-repeat scroll 0% 0%;
+            text-indent: -9999em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="publishApp">
+
+        <div class="top">
+            <shortcut />
+        </div>
+
+        <div class="cart py-container">
+
+            <!--logoArea-->
+            <div class="logoArea" style="height: 50px;">
+                <a href="index.html"><img src="img/logo.gif" style="height: 50px;" alt=""></a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main center">
+                <img class="release-icon-main" src="" alt="">
+                <div class="wave-fluid"></div>
+                <div class="release-title">发布商品出售</div>
+                <form action="publish" id="publish-form" method="post">
+                    <div class="form-wr">
+                        <div class="form-must-wr">
+
+
+
+                            <div id="show-img" class="form-item l goods-title" style="height:100px;display:none;">
+                                <div class="form-key">
+                                    <span>已上传图片</span></div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <img id="uploaded-img" src="/home/imgs/release-icon.png" width="100px"
+                                            height="100px">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-item l goods-title">
+                                <div class="form-key">
+                                    <span>选择商品图片</span></div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <input type="file" id="uploadFile"
+                                            @change="uploadPhoto('uploaded-img','input')" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-item l goods-title">
+                                <div class="form-key">
+                                    <span>商品名称</span></div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <input id="name" name="name" placeholder="最多18个字" maxlength="18" value=""
+                                            type="text" tips="请填写商品名称" autocomplete=“off”></div>
+                                </div>
+                            </div>
+
+                            <div class="form-item xl goods-desc">
+                                <div class="form-key">
+                                    <span>商品详情</span></div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <textarea name="content" id="desc" placeholder="建议填写物品用途、新旧程度、原价等信息，至少15个字"
+                                            class="required" tips="请填写详情描述"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-item l goods-price">
+                                <div class="form-key">
+                                    <span>购入价格</span></div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <input class="price required" id="buyPrice" name="buyPrice" value=""
+                                            type="number" tips="请填写购物价格"></div>
+                                </div>
+                            </div>
+                            <div class="form-item l goods-price">
+                                <div class="form-key">
+                                    <span>售出价格</span></div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <input class="price required" id="sellPrice" name="sellPrice" value=""
+                                            type="number" tips="请填写出售价格"></div>
+                                </div>
+                            </div>
+
+
+
+                            <!--选择分类信息 -->
+                            <div class="form-item l goods-cat">
+                                <div class="form-key">
+                                    <span>分类</span>
+                                </div>
+                                <div class="form-value">
+                                    <div class="form-input-wr">
+                                        <select id="cid1" @change="cid1Change"
+                                            style="width: 40%;height: 28px;color: rgb(68, 68, 68);font-size: 1.17em;line-height: 28px;background-color: transparent;">
+                                            <option>---请选择大类----</option>
+                                        </select>
+                                        <select id="cid2" name="goodsCategory.id"
+                                            style="width: 40%;height: 28px;color: rgb(68, 68, 68);font-size: 1.17em;line-height: 28px;background-color: transparent;">
+                                            <option value="-1">----请选择小类----</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <input class="form-submit" id="submit-btn" type="button" value="发布" @click="submitBtn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./js/vue/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script type="text/javascript">
+        var cartVm = new Vue({
+            el: "#publishApp",
+            data: {
+                yh,
+                // cid: '0',
+            },
+            components: {
+                shortcut: () => import("/js/pages/shortcut.js")
+            },
+            created() {
+                this.loadCarts();
+                this.loadCid();
+            },
+            mounted: {
+
+            },
+            methods: {
+
+                loadCarts() {
+                    //1.先判断登录状态
+                    yh.verifyUser().then(res => {
+                        //2.已经登录
+                        yihuo.http.get("/auth/verify").then(({ data }) => {
+                            console.log("返回值=" + data)
+                            userId = data.id
+                            return userId;
+                        }).catch(() => {
+                            console.log("查询失败")
+                        })
+                    }).catch(() => {
+                        //3.未登陆
+                        console.log("请先登录")
+                        window.location.href = 'http://www.yihuo.com/login.html'
+                    })
+                },
+                loadCid() {
+                    console.log("5555")
+                    $.ajax({//ajax方法调用，通过此方法接收前端信息发往后台并接受后台信息显示在前端
+                        type: "get",//发送请求的方式：post/get
+                        url: "http://api.yihuo.com/api/item/categoryT/list",//接收请求的地址
+                        dataType: "json",//接收后台数据的类型：text，html，json，xml
+                        data: {//这个ajax请求所携带的参数，是指前端的数据请求，以键值对方式存储，为可选项；
+                            pid: "0"
+                        },
+                        success: function (data) {//当这个请求成功发送到后台时执行的方法，这里的data参数是指后台响应后发送来的字符串类型的数据；
+                            console.log(data)
+                            for (var i = 0; i < data.length; i++) {
+                                var category = data[i];//将数据里的对象遍历取出
+                                $("#cid1").append(//添加下拉选项
+                                    "<option value='" + category.id + "'>"//将id作为选项的值
+                                    + category.name + "</option>");
+                            }
+                        },
+                    });
+                },
+                cid1Change() {
+                    var cid1 = $("#cid1").val();//获取该选项的值作为请求参数，this代表这个选择器；
+                    $.ajax({
+                        type: "get",
+                        url: "http://api.yihuo.com/api/item/categoryT/list",
+                        data: {
+                            pid: cid1
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data) {
+                                $("#cid2").empty();//先将次级选项初始化，再添加下拉数据
+                                $("#cid2").append("<option>==请选择==</option>");
+                                for (var i = 0; i < data.length; i++) {
+                                    var category = data[i];
+                                    $("#cid2").append(
+                                        "<option value='" + category.id + "'>"
+                                        + category.name + "</option>");
+                                }
+                            } else {//如果查询不到数据也要对选项初始化，即清空
+                                $("#cid2").empty();
+                                $("#cid2").append("<option>==请选择==</option>");
+                            }
+                        },
+                        error: function () {
+
+                        }
+                    });
+                },
+                uploadPhoto(showPictureImg, input) {
+                    //formdata
+                    console.log("触发了")
+                    var formData = new FormData();
+                    formData.append('file', document.getElementById('uploadFile').files[0]);
+                    $.ajax({
+                        url: 'http://api.yihuo.com/api/upload/image',
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        type: 'POST',
+                        success: function (data) {
+                            console.log(data)
+                            console.log("0000")
+                            $('.loading').addClass("hide")
+                            console.log("11111")
+                            $("#show-img").show();
+                            $("#" + showPictureImg).attr('src', data); console.log("22222")
+                            // $("#" + input).val(data.data);
+                            imageUrl = data;
+
+                            console.log("图片地址：" + imageUrl)
+                            return imageUrl;
+
+                        },
+                        error: function (data) {
+                            alert('网络错误!');
+                        }
+                    });
+                },
+                submitBtn() {
+                    var flag = true;
+                    // var userId=this.loadCarts();
+                    // var detail=$("#desc").val()
+                    // var title=$("#name").val();
+                    // var buyPrice=$("#buyPrice").val()
+                    // var sellPrice=$("sellPrice").val()
+                    // var cid=$("#cid2").val()
+                    console.log("88888" + imageUrl)
+                    console.log(typeof (userId))
+                    $(".required").each(function (i, e) {
+                        if ($(e).val() == '') {
+                            alert($(e).attr('tips'));
+                            flag = false;
+                            return false;
+                        }
+                    });
+                    if (flag) {
+                        if ($("#desc").val().length < 5) {
+                            alert('详情描述不能少于5个字！');
+                            return;
+                        }
+                        if (parseFloat($("#buyPrice").val()) == 'NaN') {
+                            alert('购买价格只能输入数字！');
+                            return;
+                        }
+                        if (parseFloat($("#sellPrice").val()) == 'NaN') {
+                            alert('出售价格只能输入数字！');
+                            return;
+                        }
+                        //检查分类
+                        if ($("#cid2").val() == '' || $("#cid2").val() == '-1') {
+                            alert('请选择物品分类！');
+                            return;
+                        }
+                        var str = {
+                            "user_id": userId,
+                            "title": $("#name").val(),
+                            "image":imageUrl,
+                            "detail":$("#desc").val(),
+                            "buy_price": $("#buyPrice").val()*100,
+                            "sell_price": $("#sellPrice").val()*100,
+                            "cid":$("#cid2").val()
+
+                        }
+                        //全部符合，准备提交表单
+                        $.ajax({
+                            url: 'http://api.yihuo.com/api/item/seconds',
+                            type: 'POST',
+                            contentType: "application/json",
+                            data: JSON.stringify(str)
+                        });
+                    }
+                },
+
+            }
+        })
+    </script>
+
+    <!-- 底部栏位 -->
+    <!--页面底部，由js动态加载-->
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <div class="clearfix footer"></div>
+    <script type="text/javascript">$(".footer").load("foot.html");</script>
+    <!--页面底部END-->
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="js/widget/nav.js"></script>
+
+</body>
+
+</html>

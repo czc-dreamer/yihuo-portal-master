@@ -1,0 +1,158 @@
+            <!--物品评论开始-->
+            <div class="comments want-comments" style="width:98.5%">
+                <div class="comments-wr" style="border-left:0px;">
+                    <div class="comment-wr">
+                        <div class="post-comment clearfix">
+                            <!--已登录状态下-->
+                            <!--                            <img class="avatar" src="/photo/view?filename=${ylrc_student.headPic}" alt="头像"/>
+                                                        <img class="avatar" src="/home/imgs/avatar1.png" alt="头像"/>-->
+                            <div class="commenting want-commenting clearfix" v-if="showComment">
+                                <div class="comment-input-wr-wr" style="margin-right:56px;">
+                                    <div class="comment-input-wr">
+                                        <textarea class="comment-input-wr" name="comment-input"
+                                                  id="comment-content" v-model="content"></textarea>
+                                    </div>
+                                </div>
+                                <button class="sub-comment" type="button" id="submit-comment-btn" data-reply="0"
+                                        data-reply-content="0" @click="comment_submit">评论
+                                </button>
+                            </div>
+                            <!--未登录状态下-->
+                            <!--                            <img class="avatar" src="/home/imgs/avatar-unlogin.png" alt="头像"/>-->
+                            <div class="commenting-unlogin want-commenting clearfix" v-else>
+                                <div class="comment-input-wr-wr">
+                                    <div class="comment-input-wr">
+                                        <span class="tips">评论总要登录留个名吧</span>
+                                    </div>
+                                </div>
+                                <button class="comment-login" data-type="l" id="to-login-btn">登录</button>
+                            </div>
+                            <!--已有的评论列表-->
+                            <div class="comments want-comments" style="width:98.5%;margin-top:10px;padding-top:0px;"
+                                 v-if="comments">
+                                <div class="comments-wr" style="border:0px;">
+                                    <div class="comment-wr">
+                                        <div class="comment" style="margin-top:25px;">
+                                            <!--                                            <img class="avatar" src="/photo/view?filename=${comment.student.headPic}"
+                                                                                             alt="头像"/>
+                                                                                        <img class="avatar" src="/home/imgs/avatar1.png" alt="头像"/>-->
+                                            <div class="commentator"
+                                                 style="padding-left:55px;padding-bottom:5px;color:rgb(75, 192, 165);border-bottom: 1px dashed rgb(75, 192, 165);">
+                                                <b>{{comments.user_id}}</b>
+                                                <span class="rpy-to" v-if="comments.replyTo">{{comments.replyTo}}</span>
+                                            </div>
+                                            <p class="comment"
+                                               style="padding-left:55px;padding-bottom:5px;padding-top:5px;">
+                                                {{comments.content}}<font
+                                                    style="float:right;">{{comments.create_time}}</font></p>
+                                            <div class="man" style="padding-left:55px;padding-bottom:5px;">
+                                                <a class="rpl" href="#comment-content" @click="reply(comments.content,comments.user_id)">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--物品评论结束-->
+
+
+                var itemVm = new Vue({
+        el: "#itemApp",
+        data: {
+            ly,
+            skus,
+            commentList,
+            userInfo,
+            content:'',
+            dataName:'',
+            showComment:false
+        },
+        computed: {
+            sku() {
+                // const index = Object.values(this.index).join("-");
+                return this.skus[0];
+            },
+            images() {
+                return this.sku.image ? this.sku.image.split(",") : [''];
+            },
+            comments() {
+                return this.commentList[0];
+            },
+            user(){
+                return this.userInfo[0];
+            },
+        },
+        created() {
+            this.comment_reply();
+        },
+        components: {
+            lyTop: () => import('/js/pages/top.js')
+        },
+        methods: {
+            increment() {
+                this.num++;
+            },
+            decrement() {
+                if (this.num > 1) {
+                    this.num--;
+                }
+            },
+            comment_reply() {
+                //1.先判断登录状态
+                ly.verifyUser().then(res => {
+                    //2.已经登录
+                    leyou.http.get("/auth/verify").then(({data}) => {
+                        this.showComment=true
+                        console.log("返回值=" + data)
+                        userId = data.id
+                        return userId;
+                    }).catch(() => {
+                        console.log("查询失败")
+                    })
+                }).catch(() => {
+                    //3.未登陆
+                    console.log("请先登录")
+
+                })
+            },
+            comment_login() {
+                window.location.href = 'http://www.leyou.com/login.html'
+            },
+            comment_submit() {
+                var content = $("#comment-content").val();
+                if(content == ''){
+                    alert('请输入评论内容！');
+                    return;
+                }
+                var data = {'goods_id':1,'content':content,'user_id':userId};
+                if($("#submit-comment-btn").attr('data-reply') != '0'){
+                    data.replyTo = $("#submit-comment-btn").attr('data-reply',userId);
+                    data.content = data.content.replace('回复：' + data.replyTo + ':','')
+                    data.content = '回复：“' + $("#submit-comment-btn").attr('data-reply-content') + '”<br>' + data.content;
+                }
+                $.ajax({
+                    type:'post',
+                    url:"http://api.leyou.com/api/item/commentT",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    success:function (){
+                        alert('评论成功');
+                        // window.location.reload();
+                }
+                });
+            },
+            reply(content,dataName){
+                this.content=content
+                this.dataName=dataName
+
+                console.log("content:"+this.content)
+                console.log("dataName:"+this.dataName)
+                $("#comment-content").val('回复：'+$(this).attr('data-name',this.dataName) + ':')
+                $("#submit-comment-btn").attr('data-reply',$(this).attr('data-name',this.dataName))
+                $("#submit-comment-btn").attr('data-reply-content',$(this).attr('data-reply',this.content))
+            }
+        }
+    });

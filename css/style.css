@@ -1,0 +1,487 @@
+﻿@charset "utf-8";
+
+* {
+    word-wrap: break-word;
+}
+
+html {
+    /*    overflow: hidden;*/
+}
+
+body {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.hide {
+    display: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+}
+
+
+
+
+.login-no-qlogin {
+    margin: 0 auto;
+    width: 430px;
+    height: 380px;
+    position: absolute;
+    float: right;
+    right: 60px;
+    font-size: 12px;
+    top: 40px;
+    z-index: 4;
+    margin-top: 100px;
+}
+
+.header {
+    height: 60px;
+    position: relative;
+    font-family: "Hiragino Sans GB", "微软雅黑";
+}
+
+
+
+
+.account-login {
+    width: 430px;
+    position: relative;
+    height: 300px;
+}
+
+.account-login .tips {
+    height: 60px;
+    width: 270px;
+    position: relative;
+    margin: 0 auto;
+    z-index: 11;
+}
+
+.account-login .error-tips {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #dad699;
+    background: #f9f5c7;
+    display: none;
+    position: absolute;
+    bottom: -2px;
+    border-radius: 2px;
+}
+
+.account-login .error-tips .error-logo {
+    position: absolute;
+    left: 3px;
+    height: 18px;
+    line-height: 18px;
+    width: 18px;
+    background: url(../img/login/icon-2.png) no-repeat 0 -162px;
+}
+
+.account-login .error-tips .err-m {
+    display: inline-block;
+    padding-left: 20px;
+    line-height: 18px;
+    color: #434343;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.account-login .operate-tips {
+    display: none;
+    padding: 8px;
+    border: 1px solid #dad699;
+    background: #f9f5c7;
+    position: absolute;
+    bottom: -2px;
+    border-radius: 2px;
+}
+
+.account-login .operate-tips .tips-link {
+    color: #f39800;
+}
+
+.account-login .operate-tips .down-row {
+    position: absolute;
+    bottom: -6px;
+    -bottom: -7px;
+    left: 20px;
+    width: 12px;
+    height: 6px;
+    background: url(../img/login/icon-2.png) no-repeat -162px -161px;
+    font-size: 1px;
+}
+
+.account-login .operate-tips .operate-content {
+    width: 100%;
+    text-align: left;
+}
+
+.account-login .loading-tips {
+    text-align: center;
+    height: 24px;
+    display: none;
+    position: absolute;
+    top: 10px;
+    width: 274px;
+}
+
+.account-login .login-form {
+    width: 280px;
+    margin: 0 auto;
+}
+
+.account-login .edge {
+    width: 272px;
+    height: 42px;
+    background: url(../img/login/icon-2.png) no-repeat -1px -1px;
+}
+
+.account-login .edge-focus {
+    width: 272px;
+    height: 42px;
+    background: url(../img/login/icon-2.png) no-repeat -1px -45px;
+}
+
+.account-login .inputstyle {
+    width: 258px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    height: 18px;
+    padding: 11px 0 11px 10px;
+    line-height: 18px;
+    border: none;
+    background: none;
+    color: #333;
+    font-family: Verdana, Tahoma, Arial;
+    font-size: 16px;
+    ime-mode: disabled;
+}
+
+.account-login .input-tips {
+    position: absolute;
+    top: 13px;
+    top: 15px;
+    left: 13px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #aaa;
+    cursor: text;
+}
+
+.account-login .accArea {
+    height: 55px;
+    position: relative;
+    z-index: 6;
+}
+
+.account-login .acc-del {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background: url(../img/login/icon-2.png) no-repeat -116px -160px;
+    display: none;
+}
+
+.account-login .acc-del:hover {
+    background-position: -139px -160px;
+}
+
+.account-login .email-list {
+    border: 1px solid #70c2ec;
+    background: #fff;
+    width: 266px;
+    position: absolute;
+    z-index: 10;
+    display: none;
+    border-radius: 1px;
+    padding: 1px;
+    left: 2px;
+}
+
+.account-login .email-list li,
+.account-login .email-list p {
+    height: 31px;
+    line-height: 31px;
+    margin: 0;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.account-login .email-list p {
+    height: 16px;
+    line-height: 10px;
+}
+
+.account-login .email-list .hover {
+    background: #cbe2fa;
+}
+
+.account-login .pwdArea {
+    height: 55px;
+    position: relative;
+    z-index: 6;
+}
+
+.account-login .lock-tips {
+    position: absolute;
+    top: 32px;
+    left: -15px;
+    height: 16px;
+    padding: 5px;
+    text-align: center;
+    display: none;
+    border: 1px solid #dad699;
+    background: #f9f5c7;
+    border-radius: 2px;
+}
+
+.account-login .lock-tips .lock-tips-row {
+    position: absolute;
+    top: -6px;
+    left: 25px;
+    width: 12px;
+    height: 6px;
+    background: url(../img/login/icon-2.png) no-repeat -162px -168px;
+}
+
+.account-login .verifyArea {
+    display: none;
+    height: 120px;
+    position: relative;
+}
+
+.account-login .verifyinputArea {
+    height: 55px;
+}
+
+.account-login .verifycode {
+    color: #333;
+    font-size: 16px;
+}
+
+.account-login .verifyimgArea {
+    position: relative;
+    height: 55px;
+    cursor: pointer;
+}
+
+.account-login .verifyimgArea .verifyimg {
+    height: 55px;
+    width: 150px;
+    position: absolute;
+    left: 0;
+}
+
+.account-login .verifyimgArea .verifyimg-tips {
+    position: absolute;
+    left: 165px;
+    top: 15px;
+    color: #000;
+}
+
+.account-login .submit {
+    position: relative;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.account-login .login-button {
+    position: absolute;
+    left: 0;
+    outline: none;
+}
+
+.account-login .login-button .btn {
+    width: 115px;
+    height: 35px;
+    line-height: 35px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    background: url(../img/login/icon-2.png) no-repeat 0 -90px;
+}
+
+.account-login .login-button:hover .btn {
+    background-position: -116px -90px;
+}
+
+.account-login .login-button:hover {
+    text-decoration: none;
+}
+
+
+
+.bottom {
+    height: 16px;
+    margin-bottom: 8px;
+    width: 340px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.bottom ul {
+    display: block;
+}
+
+.bottom li {
+    float: left;
+}
+
+.bottom li a.pdl {
+    display: inline-block;
+    position: relative;
+    padding-left: 24px;
+}
+
+.bottom li a.pdl b.QQ-icon {
+    background-position: 0 0;
+}
+
+.bottom li a.pdl b.weixin-icon {
+    background-position: -20px 0;
+}
+
+.bottom li a.pdl b {
+    width: 19px;
+    height: 18px;
+    display: block;
+    background: url(../img/login/QQ-weixin.png) no-repeat;
+    margin: 0 auto;
+    position: absolute;
+    float: left;
+    left: 0;
+}
+
+.bottom li .line {
+    color: #ccc;
+    padding: 0 10px;
+}
+
+.bottom li.registe {
+    float: right;
+}
+
+.bottom .link {
+    /*定义竖线的颜色*/
+    color: #c81623;
+}
+
+
+.bottom .vip-link:hover {
+    color: #f00;
+}
+
+.account-qrcode-login {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+
+.login,
+.login-no-qlogin {
+    background-color: #ffffff;
+}
+
+
+
+.qrcode-switch {
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+.qrcode-switch-logo {
+    position: absolute;
+    right: 10px;
+    width: 51px;
+    height: 77px;
+    background: url(../img/login/pull-2.gif) no-repeat;
+    outline: none;
+}
+
+.qrcode-switch-logo-qrcode {
+    position: absolute;
+    right: 20px;
+    width: 40px;
+    height: 50px;
+    background: url(../img/login/pull-3.gif) no-repeat;
+    outline: none;
+}
+
+
+.qrcode-login {
+    display: none;
+    position: relative;
+    width: 430px;
+    height: 265px;
+    background: url(../img/login/qrcode-bg.png) repeat;
+    font-size: 14px;
+}
+
+.qrcode-login .qrcode-step {
+    position: relative;
+    height: 230px;
+}
+
+.qrcode-login .qrcode-tips {
+    height: 18px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 35px;
+}
+
+.qrcode-login .qrcode-link {
+    color: #75c429;
+    font-weight: bolder;
+    margin: 0 8px;
+}
+
+.qrcode-login .qrcode-login-bg {
+    width: 150px;
+    height: 96px;
+    background: url(../img/login/qrcode.png) no-repeat 0 0;
+    position: absolute;
+    top: 88px;
+    left: 80px;
+    -background: none;
+    -filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='qrcode-1-ie6.png', sizingMethod="crop");
+}
+
+.qrcode-login .qrcode-login-img {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    right: 80px;
+    top: 80px;
+}

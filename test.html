@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/plugins/jquery/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <a id="dd" onclick="get()" href="#">智能机</a>
+
+</body>
+<script>
+    function get(){
+      var str= document.getElementById('dd').innerText
+      window.location = 'search.html?key=' + str;
+    }
+
+</script>
+</html>

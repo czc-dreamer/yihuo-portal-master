@@ -1,0 +1,893 @@
+/* header.css Date:2018-04-24 21:00:13 */
+
+/*//上部分*/
+.header .logo,
+ {
+    background: url(../img/register/icon.png) no-repeat
+}
+
+
+.header {
+    width: 100%;
+    height: 110px;
+    box-shadow: 10px 10px 10px rgba(111, 111, 111, .5);
+    position: relative;
+}
+
+.header img {
+    border: 0;
+    vertical-align: middle;
+    float: left;
+    margin-top: 20px;
+}
+
+.header .logo-title {
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    font-size: 24px;
+    color: #333;
+    margin-top: 34px
+}
+
+.header .have-account {
+    font-size: 16px;
+    float: right;
+    margin-top: 55px;
+    color: #999
+}
+
+.header .have-account a {
+    color: #e22
+}
+
+.header .have-account a:hover {
+    color: #c81623;
+    text-decoration: underline
+}
+
+/* user-reg/3.0.0 common.css Date:2018-12-06 19:04:37 */
+
+
+button,
+input,
+select,
+textarea {
+    outline: 0
+}
+
+textarea {
+    font-size: 13px;
+    resize: none
+}
+
+input::-ms-clear {
+    display: none
+}
+
+input::-ms-reveal {
+    width: 0;
+    height: 0
+}
+
+
+/*分步注册步骤提示*/
+.protocol-con {
+    height: 426px;
+    padding: 10px;
+    line-height: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 25px
+}
+
+.protocol-con h4,
+.protocol-con h5 {
+    color: #333;
+    font-size: 14px
+}
+
+.protocol-con h5 {
+    margin: 10px 0
+}
+
+.protocol-button button {
+    margin: 0 auto;
+    display: block;
+    width: 400px;
+    height: 54px;
+    color: #fff;
+    background: #e22;
+    border: 0;
+    font-size: 16px;
+    font-family: "Microsoft YaHei", "Hiragino Sans GB"
+}
+
+.progress-bar .pro-line,
+.progress-bar .pro-step .step-index {
+    background: url(../img/register/reg-icon.png) no-repeat
+}
+
+
+
+.progress-bar {
+    position: relative;
+    margin: 80px auto 0;
+    width: 400px
+}
+
+.progress-bar .pro-step {
+    float: left;
+    text-align: center
+}
+
+.progress-bar .pro-step .step-index {
+    margin: 0 auto;
+    display: block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background-position: -45px -200px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ccc
+}
+
+.progress-bar .pro-step .step-desc {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999
+}
+
+.progress-bar .pro-step2 {
+    margin-left: 49px
+}
+
+.progress-bar .person-pro-step2 {
+    margin-left: 106px
+}
+
+.progress-bar .pro-step3 {
+    margin-left: 43px
+}
+
+.progress-bar .person-pro-step3 {
+    margin-left: 112px
+}
+
+.progress-bar .pro-step4 {
+    margin-left: 51px
+}
+
+.progress-bar .cur-step .step-index {
+    background-position: 0 -200px;
+    color: #fff
+}
+
+.progress-bar .cur-step .step-desc {
+    color: #3b4
+}
+
+.progress-bar .done-step .step-index {
+    background-position: 0 0;
+    border: none
+}
+
+.progress-bar .done-step .step-desc {
+    color: #3b4
+}
+
+.progress-bar .pro-line {
+    position: absolute;
+    top: 7px;
+    width: 74px;
+    height: 10px;
+    background-position: 0 -40px
+}
+
+.progress-bar .person-pro-line {
+    width: 124px;
+    background-position: 0 -100px
+}
+
+.progress-bar .pro-line1 {
+    left: 50px
+}
+
+.progress-bar .person-pro-line1 {
+    left: 55px
+}
+
+.progress-bar .pro-line2 {
+    left: 169px
+}
+
+.progress-bar .person-pro-line2 {
+    left: 228px
+}
+
+.progress-bar .pro-line3 {
+    right: 42px
+}
+
+.progress-bar .cur-line {
+    background-position: 0 -70px
+}
+
+.progress-bar .person-cur-line {
+    background-position: 0 -130px
+}
+
+
+/*大写提示部分*/
+.tips {
+    position: absolute;
+    background: #fef4e5;
+    border: solid 1px #f6c090;
+    color: #bc5212;
+    display: none;
+    padding: 0 12px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 3px;
+    z-index: 11
+}
+
+.tips .arrow {
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-color: #f6c090 transparent transparent;
+    border-style: solid dashed dashed;
+    border-width: 8px;
+    position: absolute;
+    left: 50%;
+    margin-left: -4px;
+    bottom: -16px
+}
+
+
+.tips .arrow-inner {
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-color: #fef4e5 transparent transparent;
+    border-style: solid dashed dashed;
+    border-width: 8px;
+    position: absolute;
+    left: 50%;
+    margin-left: -4px;
+    bottom: -15px
+}
+
+.capslock-tip {
+    right: 2px;
+    top: -45px
+}
+
+
+
+/* reg-steps.css Date:2018-04-24 21:00:11 */
+@charset "UTF-8";
+
+.form-agreen .agree-tip i,
+.form-agreen .sim-checkbox,
+.formItem .i-cancel,
+.reg-other .reg-ohter-icon {
+    background: url(../img/register/reg-icon.png) no-repeat
+}
+
+
+
+body {
+    font-size: 14px
+}
+
+.main {
+    margin: 50px auto 186px;
+    width: 400px
+}
+
+.mb230 {
+    margin-bottom: 230px
+}
+
+.formItem {
+    position: relative;
+    border: solid 1px #ddd;
+    width: 398px;
+    height: 52px;
+    z-index: 0
+}
+
+.register-box .formItem {
+    position: relative;
+    border: solid 1px #ddd;
+    width: 398px;
+    height: 52px;
+    z-index: 0
+}
+
+
+/*手机注册部分（不完全）*/
+.item-phone-wrap .formItem {
+    position: relative;
+    border: solid 1px #ddd;
+    width: 398px;
+    height: 52px;
+    z-index: 0
+}
+
+.item-phone-wrap .formItem label {
+    float: left;
+    width: 87px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    border: solid 1px #f6f6f6;
+}
+
+
+.formItem-phone {
+    border: none
+}
+
+
+/*.formItem-phone .select-country {
+    border: solid 1px #ddd;
+    border-right: none;
+    padding: 0 0 0 20px;
+    cursor: pointer;
+    color: #666
+}
+
+.formItem-phone .arrow {
+    background: url(icon.png) no-repeat;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 5px;
+    background-position: -2px -150px;
+    *zoom: 1;
+    *height: 20px
+}
+
+
+.form-agreen {
+    position: relative;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 12px;
+    word-wrap: break-word;
+    white-space: nowrap
+}
+
+.form-agreen input {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: solid 1px #cfd1d3;
+    vertical-align: text-top;
+    padding: 0;
+    margin: 0
+}
+
+.form-agreen .sim-checkbox {
+    background-position: -107px -156px;
+    float: left;
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd
+}
+
+.form-agreen .sim-checkbox.not-checked {
+    background: 0 0
+}
+
+.form-agreen .agree-tip {
+    display: none;
+    position: absolute;
+    width: 226px;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(0, 0, 0, .8);
+    color: #fff;
+    bottom: 10px;
+    left: 87px;
+    text-align: center;
+    font-size: 14px;
+    z-index: 1000
+}
+
+.form-agreen .agree-tip i {
+    display: inline-block;
+    background-position: -40px 0;
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle
+}
+
+.form-agreen a {
+    color: #06c
+}
+
+.form-agreen a:hover {
+    color: #c81623;
+    text-decoration: underline
+}*/
+
+/*公用部分*/
+.formItem label {
+    float: left;
+    width: 87px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+}
+
+.formItem txt {
+    margin-top: 2px !important
+}
+
+.formItem .item-input-wrap {
+    float: left;
+    width: 288px;
+    height: 50px;
+}
+
+.formItem .field {
+    border: 0 none;
+    font-size: 14px;
+    width: 190px;
+    height: 19px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-top: 16px
+}
+
+.formItem .field::-webkit-input-placeholder {
+    color: #ccc
+}
+
+.formItem .field:-moz-placeholder {
+    color: #ccc
+}
+
+.formItem .field::-moz-placeholder {
+    color: #ccc
+}
+
+.formItem .field:-ms-input-placeholder {
+    color: #ccc
+}
+
+.formItem .field span {
+    display: none
+}
+
+.formItem .form-authcode {
+    width: 150px
+}
+
+.formItem .mailcode,
+.formItem .phonecode {
+    width: 152px
+}
+
+.formItem .error {
+    display: block
+}
+
+.formItem .i-status {
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: url(../img/register/right.png) no-repeat center center;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    right: 10px;
+}
+
+.formItem .i-cancel {
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: url(../img/register/x.png) no-repeat center center;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.formItem .img-code {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 110px;
+    height: 46px;
+    cursor: pointer
+}
+
+
+.btn-mailcode,
+.btn-phonecode {
+    float: left;
+    width: 118px;
+    height: 52px;
+    border: 1px solid #ddd;
+    border-left: none;
+    background: #fff;
+    color: #333;
+    padding: 0
+}
+
+.btn-code-disable {
+    background: #f4f5f6;
+    color: #999;
+    cursor: default
+}
+
+.formItem-getcode {
+    line-height: 52px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    z-index: 2
+}
+
+.formItem-getcode:hover {
+    border-color: #666
+}
+
+.formItem-account {
+    z-index: 13
+}
+
+
+/*.register-box .formItem.right i {
+    width: 20px;
+    height: 20px;
+    background: url(right.png) no-repeat center center;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    right: 10px;
+
+}*/
+
+
+/*提示信息样式设置*/
+.register-box .tip {
+    width: 100%;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.item-phone-wrap .tip {
+    width: 100%;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.tip i {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tip span {
+    color: #f91;
+}
+
+/*提示信息隐藏样式*/
+.tip.hide {
+    display: none;
+}
+
+/*提示信息默认样式*/
+.tip.default i {
+    background: url(../img/register/default.png) no-repeat center center;
+}
+
+.tip.default span {
+    color: #ccc;
+}
+
+/*提示信息错误样式*/
+.tip.error i {
+    background: url(../img/register/error.png) no-repeat center center;
+}
+
+.tip.error span {
+    color: red;
+}
+
+.tip.pwdWeak i {
+    background: url(../img/register/weak.png) no-repeat center center;
+}
+
+.tip.pwdMedium i {
+    background: url(../img/register/medium.png) no-repeat center center;
+}
+
+.tip.pwdStrong i {
+    background: url(../img/register/strong.png) no-repeat center center;
+}
+
+
+
+.btn-register {
+    width: 100%;
+    height: 54px;
+    line-height: 54px;
+    text-align: center;
+    color: #fff;
+    background: #e2231a;
+    border: 0;
+    font-size: 16px;
+    font-family: "Microsoft YaHei", "Hiragino Sans GB";
+    cursor: pointer
+}
+
+.btn-register:hover {
+    background: #c81623
+}
+
+.btn-register:active {
+    background: #c81623;
+    color: #eababc
+}
+
+
+
+/*.phone-suggest {
+    width: 145px;
+    border-left: solid 1px #ccc;
+    background: #fff;
+    border-bottom: none;
+    z-index: 11
+}
+
+.phone-suggest li {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px
+}
+
+.phone-suggest .current,
+.phone-suggest .selected {
+    background: #f6f6f6
+}*/
+
+.email-suggest {
+    position: absolute;
+    border: solid 1px #ccc;
+    z-index: 10;
+    background: #fff;
+    left: -1px;
+    top: 52px;
+    width: 100%
+}
+
+.email-suggest li {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 130px;
+    color: #333;
+    padding-right: 12px;
+    text-align: right;
+    text-indent: -1000px
+}
+
+.email-suggest li .value {
+    overflow: hidden
+}
+
+.email-suggest .current {
+    background: #f6f6f6
+}
+
+
+.item-mailcode-wrap,
+.item-phonecode-wrap {
+    display: none;
+    height: 86px;
+    margin-top: 32px;
+}
+
+.formItem-mailcode,
+.formItem-phonecode {
+    border: none;
+    z-index: 110;
+    width: 400px
+}
+
+.formItem-mailcode label,
+.formItem-phonecode label {
+    border: none
+}
+
+.formItem-mailcode .i-status,
+.formItem-phonecode .i-status {
+    right: 125px;
+    display: none
+}
+
+.phonecode-left {
+    position: relative;
+    float: left;
+    border: solid 1px #ddd;
+}
+
+/*.formItem-mailcode .audio-tip,
+.formItem-phonecode .audio-tip {
+    display: none;
+    padding-top: 23px;
+    text-align: right;
+    font-size: 12px
+}
+
+.formItem-mailcode .audio-tip .get-auth-code,
+.formItem-phonecode .audio-tip .get-auth-code {
+    color: #06c;
+    cursor: pointer
+}
+
+.formItem-mailcode .audio-tip .get-auth-code:hover,
+.formItem-phonecode .audio-tip .get-auth-code:hover {
+    text-decoration: underline
+}
+
+.formItem-authcode .i-status {
+    right: 125px
+}
+*/
+.item-phone-wrap {
+    height: 86px;
+    position: relative;
+    z-index: 2
+}
+
+.item-phone-wrap .orEmail {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+    font-size: 12px
+}
+
+.item-phone-wrap .orEmail a {
+    color: #38f
+}
+
+.item-email-wrap {
+    height: 86px;
+    position: relative;
+    z-index: 1000
+}
+
+.item-email-wrap .orPhone {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+    font-size: 12px
+}
+
+.item-email-wrap .orPhone a {
+    color: #38f
+}
+
+.item-email-wrap .formItem {
+    z-index: 11
+}
+
+.ignore-item {
+    display: none
+}
+
+#form-equalTopwd,
+#form-pwd,
+#login-pwd {
+    width: 210px
+}
+
+.noSelect {
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none
+}
+
+
+
+#step2-wrap {
+    display: none;
+}
+
+#step2-wrap .formItem:hover {
+    border: 1px solid #999
+}
+
+#step2-wrap .formItem-mailcode:hover {
+    border: none
+}
+
+.back-btn {
+    text-align: center;
+    font-size: 14px
+}
+
+.back-btn:active,
+.back-btn:hover {
+    color: #c81623;
+    text-decoration: underline;
+    cursor: pointer
+}
+
+.back-btn:active {
+    opacity: .6
+}
+
+.blue-btn {
+    color: #06c;
+    cursor: pointer
+}
+
+.blue-btn:hover {
+    text-decoration: underline
+}
+
+/* foreign-number-layer-170524.css Date:2018-07-23 18:59:01 */
+
+
+.flr {
+    float: right
+}
+
+#no-result,
+#result {
+    display: none;
+    clear: both
+}
+
+/* footer.css Date:2018-04-24 21:00:13 */
+.footer {
+    font-size: 12px;
+    text-align: center;
+    border-top: solid 1px #e6e6e6;
+    color: #999;
+    padding-bottom: 30px
+}
+
+.footer .links {
+    padding-top: 30px;
+    padding-bottom: 15px
+}
+
+.footer p {
+    color: #bbb
+}
+
+.footer a {
+    color: #999;
+    margin: 0 10px
+}
+
+.footer a:hover {
+    text-decoration: underline
+}
+
+.register-box {
+    height: 86px;
+}
